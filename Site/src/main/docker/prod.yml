@@ -1,0 +1,10 @@
+swhappy-postgresql:
+  container_name: swhappy-postgresql
+  image: postgres:9.4.5
+  # volumes:
+  #   - ~/volumes/jhipster/swhappy/postgresql/:/var/lib/postgresql/
+  environment:
+    - POSTGRES_USER=swhappy
+    - POSTGRES_PASSWORD=
+  ports:
+    - "5432:5432"

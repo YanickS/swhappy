@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20131001" xmlns:xmi="http://www.omg.org/spec/XMI/20131001" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_ya0IIKpzEeauGdiYok0Ntw" name="NewModel">
+  <packageImport xmi:id="_VRgaMKp0EeauGdiYok0Ntw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:id="_Voy40Kp0EeauGdiYok0Ntw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/JavaPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:id="_WGGf4Kp0EeauGdiYok0Ntw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/XMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packageImport xmi:id="_WdzOMKp0EeauGdiYok0Ntw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_2QPhkKpzEeauGdiYok0Ntw" name="User"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_GbqnUKp0EeauGdiYok0Ntw" name="Survey">
+    <ownedAttribute xmi:id="_uN37sKp1EeauGdiYok0Ntw" name="title">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_IW9vAKp3EeauGdiYok0Ntw" name="type">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_PjQWkKp3EeauGdiYok0Ntw" name="points">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_SXnUkKp3EeauGdiYok0Ntw" name="promo">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_e0j9cKp3EeauGdiYok0Ntw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_e0j9cap3EeauGdiYok0Ntw" value="1"/>
+    </ownedAttribute>
+    <nestedClassifier xmi:type="uml:Class" xmi:id="_SIASoKp0EeauGdiYok0Ntw" name="Animal">
+      <ownedAttribute xmi:id="_SIASoap0EeauGdiYok0Ntw" name="name"/>
+      <ownedAttribute xmi:id="_SIASoqp0EeauGdiYok0Ntw" name="age"/>
+      <ownedAttribute xmi:id="_SIASo6p0EeauGdiYok0Ntw" name="sexe"/>
+      <ownedAttribute xmi:id="_SIASpKp0EeauGdiYok0Ntw" name="tatoo"/>
+      <ownedAttribute xmi:id="_SIASpap0EeauGdiYok0Ntw" name="chip"/>
+      <ownedAttribute xmi:id="_SIASpqp0EeauGdiYok0Ntw" name="photo"/>
+      <ownedAttribute xmi:id="_SIASp6p0EeauGdiYok0Ntw" name="colors"/>
+    </nestedClassifier>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Sa71sKp0EeauGdiYok0Ntw" name="Question">
+    <ownedAttribute xmi:id="_9biOIKp0EeauGdiYok0Ntw" name="label">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_h-KLoKp3EeauGdiYok0Ntw" name="answer1">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_keUbQKp3EeauGdiYok0Ntw" name="answer2">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_8ROIYKp6EeauGdiYok0Ntw" name="counter1">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_EcSsYKp7EeauGdiYok0Ntw" name="counter2">
+      <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_i_yvIKp0EeauGdiYok0Ntw" memberEnd="_i_yvIap0EeauGdiYok0Ntw _i_zWMqp0EeauGdiYok0Ntw" navigableOwnedEnd="_i_zWMqp0EeauGdiYok0Ntw">
+    <name xsi:nil="true"/>
+    <ownedEnd xmi:id="_i_yvIap0EeauGdiYok0Ntw" name="surveys" type="_GbqnUKp0EeauGdiYok0Ntw" aggregation="composite" association="_i_yvIKp0EeauGdiYok0Ntw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_i_zWMKp0EeauGdiYok0Ntw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_i_zWMap0EeauGdiYok0Ntw" value="1"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_i_zWMqp0EeauGdiYok0Ntw" name="questions" type="_Sa71sKp0EeauGdiYok0Ntw" association="_i_yvIKp0EeauGdiYok0Ntw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_i_z9QKp0EeauGdiYok0Ntw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_i_z9Qap0EeauGdiYok0Ntw" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_qqlJMKp3EeauGdiYok0Ntw" memberEnd="_qqlJMap3EeauGdiYok0Ntw _qqlwQqp3EeauGdiYok0Ntw" navigableOwnedEnd="_qqlJMap3EeauGdiYok0Ntw _qqlwQqp3EeauGdiYok0Ntw">
+    <ownedEnd xmi:id="_qqlJMap3EeauGdiYok0Ntw" name="users" type="_2QPhkKpzEeauGdiYok0Ntw" association="_qqlJMKp3EeauGdiYok0Ntw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qqlwQKp3EeauGdiYok0Ntw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qqlwQap3EeauGdiYok0Ntw" value="*"/>
+    </ownedEnd>
+    <ownedEnd xmi:id="_qqlwQqp3EeauGdiYok0Ntw" name="surveys" type="_GbqnUKp0EeauGdiYok0Ntw" association="_qqlJMKp3EeauGdiYok0Ntw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qqmXUKp3EeauGdiYok0Ntw"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qqmXUap3EeauGdiYok0Ntw" value="*"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Model>
