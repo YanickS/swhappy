@@ -19,8 +19,15 @@ public class UserDTO {
     @Pattern(regexp = Constants.LOGIN_REGEX)
     @Size(min = 1, max = 50)
     private String login;
-
+    
+    private int age;
+    
+    private int score;
+    
     @Size(max = 50)
+    private String sexe;
+
+	@Size(max = 50)
     private String firstName;
 
     @Size(max = 50)
@@ -44,11 +51,11 @@ public class UserDTO {
         this(user.getLogin(), user.getFirstName(), user.getLastName(),
             user.getEmail(), user.getActivated(), user.getLangKey(),
             user.getAuthorities().stream().map(Authority::getName)
-                .collect(Collectors.toSet()));
+                .collect(Collectors.toSet()), user.getScore(), user.getSexe(), user.getAge());
     }
 
     public UserDTO(String login, String firstName, String lastName,
-        String email, boolean activated, String langKey, Set<String> authorities) {
+        String email, boolean activated, String langKey, Set<String> authorities, int score, String sexe, int age) {
 
         this.login = login;
         this.firstName = firstName;
@@ -57,9 +64,13 @@ public class UserDTO {
         this.activated = activated;
         this.langKey = langKey;
         this.authorities = authorities;
+        this.score = score;
+        this.sexe = sexe;
+        this.age = age;
     }
 
-    public String getLogin() {
+
+	public String getLogin() {
         return login;
     }
 
@@ -86,6 +97,18 @@ public class UserDTO {
     public Set<String> getAuthorities() {
         return authorities;
     }
+    
+    public int getAge() {
+		return age;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public String getSexe() {
+		return sexe;
+	}
 
     @Override
     public String toString() {
@@ -96,7 +119,10 @@ public class UserDTO {
             ", email='" + email + '\'' +
             ", activated=" + activated +
             ", langKey='" + langKey + '\'' +
-            ", authorities=" + authorities +
+            ", authorities=" + authorities + '\'' +
+            ", age=" + age + '\'' +
+            ", sexe='" + sexe + '\'' +
+            ", score=" + score +
             "}";
     }
 }

@@ -78,7 +78,7 @@ public class UserService {
             });
     }
 
-    public User createUser(String login, String password, String firstName, String lastName, String email,
+    public User createUser(String login, String password, int age, int score, String sexe, String firstName, String lastName, String email,
         String langKey) {
 
         User newUser = new User();
@@ -93,7 +93,10 @@ public class UserService {
         newUser.setEmail(email);
         newUser.setLangKey(langKey);
         // new user is not active
-        newUser.setActivated(false);
+        newUser.setActivated(true);
+        newUser.setAge(age);
+        newUser.setSexe(sexe);
+        newUser.setScore(score);
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);

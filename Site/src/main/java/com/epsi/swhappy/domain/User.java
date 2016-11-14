@@ -46,8 +46,18 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Size(max = 50)
     @Column(name = "first_name", length = 50)
     private String firstName;
-
+    
+	@Column(name = "age")
+    private Integer age;
+	
+	@Column(name = "score")
+    private Integer score;
+	
     @Size(max = 50)
+    @Column(name = "sexe", length = 50)
+    private String sexe;
+
+	@Size(max = 50)
     @Column(name = "last_name", length = 50)
     private String lastName;
 
@@ -181,6 +191,30 @@ public class User extends AbstractAuditingEntity implements Serializable {
     public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
     }
+    
+    public String getSexe() {
+		return sexe;
+	}
+
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
+	}
+
+	public Integer getAge() {
+		return age;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public Integer getScore() {
+		return score;
+	}
+
+	public void setScore(Integer score) {
+		this.score = score;
+	}
 
     @Override
     public boolean equals(Object o) {

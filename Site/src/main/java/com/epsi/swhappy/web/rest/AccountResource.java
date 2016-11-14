@@ -66,7 +66,7 @@ public class AccountResource {
             .orElseGet(() -> userRepository.findOneByEmail(managedUserVM.getEmail())
                 .map(user -> new ResponseEntity<>("e-mail address already in use", textPlainHeaders, HttpStatus.BAD_REQUEST))
                 .orElseGet(() -> {
-                    User user = userService.createUser(managedUserVM.getLogin(), managedUserVM.getPassword(),
+                    User user = userService.createUser(managedUserVM.getLogin(), managedUserVM.getPassword(), managedUserVM.getAge(), managedUserVM.getScore(),  managedUserVM.getSexe(),  
                     managedUserVM.getFirstName(), managedUserVM.getLastName(), managedUserVM.getEmail().toLowerCase(),
                     managedUserVM.getLangKey());
                     String baseUrl = request.getScheme() + // "http"
