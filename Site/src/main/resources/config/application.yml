@@ -11,14 +11,29 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
+management:
+    context-path: /management
+    health:
+        mail:
+            enabled: false # When using the MailService, configure an SMTP server and set this to true
 spring:
+    application:
+        name: swhappy
+    profiles:
+        # The commented value for `active` can be replaced with valid spring profiles to load.
+        # Otherwise, it will be filled in by maven when building the WAR file
+        # Either way, it can be overridden by `--spring.profiles.active` value passed in the commandline or `-Dspring.profiles.active` set in `JAVA_OPTS`
+        active: #spring.profiles.active#
+    jackson:
+        serialization.write_dates_as_timestamps: false
     jpa:
         open-in-view: false
         hibernate:
             ddl-auto: none
-            naming-strategy: org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy
+            naming:
+                strategy: org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy
     messages:
-        basename: classpath:/i18n/messages
+        basename: i18n/messages
     mvc:
         favicon:
             enabled: false
@@ -28,6 +43,11 @@ spring:
 security:
     basic:
         enabled: false
+
+server:
+    session:
+        cookie:
+            http-only: true
 
 # ===================================================================
 # JHipster specific properties
@@ -47,20 +67,16 @@ jhipster:
         #max-age: 1800
     mail:
         from: swhappy@localhost
-    security:
-        authentication:
-            xauth:
-                secret: myXAuthSecret
-                # Token is valid 30 minutes
-                tokenValidityInSeconds: 1800
-        rememberme:
-            # security key (this key should be unique for your application, and kept secret)
-            key: c153711cb348fb67d954af60186dd7d2e069d151
     swagger:
         title: swhappy API
         description: swhappy API documentation
         version: 0.0.1
         termsOfServiceUrl:
-        contact:
+        contactName:
+        contactUrl:
+        contactEmail:
         license:
         licenseUrl:
+    ribbon:
+        # comma seperated list of profiles to show a ribbon on the GUI
+        displayOnActiveProfiles: dev

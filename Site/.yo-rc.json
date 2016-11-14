@@ -1,24 +1,32 @@
 {
   "generator-jhipster": {
+    "jhipsterVersion": "3.10.0",
     "baseName": "swhappy",
-    "packageName": "com.swhappy",
-    "packageFolder": "com/swhappy",
-    "authenticationType": "xauth",
+    "packageName": "com.epsi.swhappy",
+    "packageFolder": "com/epsi/swhappy",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
     "hibernateCache": "ehcache",
-    "clusteredHttpSession": "no",
-    "websocket": "no",
+    "clusteredHttpSession": false,
+    "websocket": false,
     "databaseType": "sql",
     "devDatabaseType": "postgresql",
     "prodDatabaseType": "postgresql",
-    "searchEngine": "no",
-    "useSass": false,
+    "searchEngine": false,
+    "messageBroker": false,
     "buildTool": "maven",
-    "frontendBuilder": "grunt",
-    "enableTranslation": true,
     "enableSocialSignIn": false,
-    "rememberMeKey": "c153711cb348fb67d954af60186dd7d2e069d151",
+    "jwtSecretKey": "2e68c4eb1312aba49072667ca89d0b53b5b8b340",
+    "useSass": false,
+    "applicationType": "monolith",
     "testFrameworks": [
       "gatling"
+    ],
+    "jhiPrefix": "jhi",
+    "enableTranslation": true,
+    "nativeLanguage": "fr",
+    "languages": [
+      "fr"
     ]
   }
 }

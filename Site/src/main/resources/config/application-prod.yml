@@ -10,24 +10,23 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
+
 spring:
-    profiles:
-        active: prod
     devtools:
         restart:
             enabled: false
         livereload:
             enabled: false
     datasource:
-        driver-class-name: org.postgresql.ds.PGSimpleDataSource
+        type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:postgresql://localhost:5432/swhappy
         name:
         username: swhappy
         password:
     jpa:
-        database-platform: com.swhappy.domain.util.FixedPostgreSQL82Dialect
+        database-platform: com.epsi.swhappy.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL
-        show_sql: false
+        show-sql: false
         properties:
             hibernate.cache.use_second_level_cache: true
             hibernate.cache.use_query_cache: false
@@ -49,6 +48,7 @@ server:
     compression:
         enabled: true
         mime-types: text/html,text/xml,text/plain,text/css, application/javascript, application/json
+        min-response-size: 1024
 
 # ===================================================================
 # JHipster specific properties
@@ -57,11 +57,16 @@ server:
 jhipster:
     http:
         cache: # Used by the CachingHttpHeadersFilter
-            timeToLiveInDays: 31
+            timeToLiveInDays: 1461
     cache: # Hibernate 2nd level cache, used by CacheConfiguration
-        timeToLiveSeconds: 3600
         ehcache:
             maxBytesLocalHeap: 256M
+    security:
+        authentication:
+            jwt:
+                secret: 2e68c4eb1312aba49072667ca89d0b53b5b8b340
+                # Token is valid 24 hours
+                tokenValidityInSeconds: 86400
     mail: # specific JHipster mail property, for standard properties see MailProperties
         from: swhappy@localhost
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
@@ -75,3 +80,12 @@ jhipster:
             host: localhost
             port: 2003
             prefix: swhappy
+        logs: # Reports Dropwizard metrics in the logs
+            enabled: false
+            reportFrequency: 60 # in seconds
+    logging:
+        logstash: # Forward logs to logstash over a socket, used by LoggingConfiguration
+            enabled: false
+            host: localhost
+            port: 5000
+            queueSize: 512

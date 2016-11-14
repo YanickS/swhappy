@@ -10,21 +10,27 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
+
 spring:
+    application:
+        name: swhappy
+    jackson:
+        serialization.write_dates_as_timestamps: false
     datasource:
-        driver-class-name: org.h2.jdbcx.JdbcDataSource
+        type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:h2:mem:swhappy;DB_CLOSE_DELAY=-1
         name:
         username:
         password:
     jpa:
-        database-platform: com.swhappy.domain.util.FixedH2Dialect
+        database-platform: com.epsi.swhappy.domain.util.FixedH2Dialect
         database: H2
         open-in-view: false
-        show_sql: true
+        show-sql: true
         hibernate:
             ddl-auto: none
-            naming-strategy: org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy
+            naming:
+                strategy: org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy
         properties:
             hibernate.cache.use_second_level_cache: false
             hibernate.cache.use_query_cache: false
@@ -60,13 +66,10 @@ jhipster:
         queueCapacity: 10000
     security:
         authentication:
-            xauth:
-                secret: myXAuthSecret
-                # Token is valid 30 minutes
-                tokenValidityInSeconds: 1800
-        rememberme:
-            # security key (this key should be unique for your application, and kept secret)
-            key: c153711cb348fb67d954af60186dd7d2e069d151
+            jwt:
+                secret: 2e68c4eb1312aba49072667ca89d0b53b5b8b340
+                # Token is valid 24 hours
+                tokenValidityInSeconds: 86400
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
     swagger:
@@ -74,6 +77,8 @@ jhipster:
         description: swhappy API documentation
         version: 0.0.1
         termsOfServiceUrl:
-        contact:
+        contactName:
+        contactUrl:
+        contactEmail:
         license:
         licenseUrl:

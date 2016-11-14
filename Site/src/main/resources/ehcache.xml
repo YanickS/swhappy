@@ -17,23 +17,25 @@
             overflowToDisk="false"
             />
 
-    <cache name="com.swhappy.domain.User"
+    <cache name="com.epsi.swhappy.domain.User"
            timeToLiveSeconds="3600">
     </cache>
 
-    <cache name="com.swhappy.domain.Authority"
+    <cache name="com.epsi.swhappy.domain.Authority"
            timeToLiveSeconds="3600">
     </cache>
 
-    <cache name="com.swhappy.domain.User.authorities"
+    <cache name="com.epsi.swhappy.domain.User.authorities"
            timeToLiveSeconds="3600">
     </cache>
 
-    <cache name="com.swhappy.domain.PersistentToken"
+    <cache name="com.epsi.swhappy.domain.PersistentToken"
            timeToLiveSeconds="3600">
     </cache>
 
-    <cache name="com.swhappy.domain.User.persistentTokens"
+    <cache name="com.epsi.swhappy.domain.User.persistentTokens"
            timeToLiveSeconds="3600">
     </cache>
-    </ehcache>
+    
+    <!-- jhipster-needle-ehcache-add-entry -->
+</ehcache>
