@@ -1,0 +1,43 @@
+
+<div>
+    <h2><span data-translate="swhappyApp.question.detail.title">Question</span> {{vm.question.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="swhappyApp.question.label">Label</span></dt>
+        <dd>
+            <span>{{vm.question.label}}</span>
+        </dd>
+        <dt><span data-translate="swhappyApp.question.answer1">Answer 1</span></dt>
+        <dd>
+            <span>{{vm.question.answer1}}</span>
+        </dd>
+        <dt><span data-translate="swhappyApp.question.answer2">Answer 2</span></dt>
+        <dd>
+            <span>{{vm.question.answer2}}</span>
+        </dd>
+        <dt><span data-translate="swhappyApp.question.counter1">Counter 1</span></dt>
+        <dd>
+            <span>{{vm.question.counter1}}</span>
+        </dd>
+        <dt><span data-translate="swhappyApp.question.counter2">Counter 2</span></dt>
+        <dd>
+            <span>{{vm.question.counter2}}</span>
+        </dd>
+        <dt><span data-translate="swhappyApp.question.surveys">Surveys</span></dt>
+        <dd>
+            <a ui-sref="survey-detail({id:vm.question.surveys.id})">{{vm.question.surveys.id}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="question-detail.edit({id:vm.question.id})" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,26 @@
+{
+    "swhappyApp": {
+        "survey" : {
+            "home": {
+                "title": "Surveys",
+                "createLabel": "Créer un nouveau Survey",
+                "createOrEditLabel": "Créer ou éditer un Survey",
+                "search": "Recherche pour Survey"
+            },
+            "created": "Un nouveau Survey a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Survey avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Survey avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Survey {{ id }} ?"
+            },
+            "detail": {
+                "title": "Survey"
+            },
+            "title": "Title",
+            "type": "Type",
+            "points": "Points",
+            "promo": "Promo",
+            "questions": "Questions"
+        }
+    }
+}

@@ -1,0 +1,38 @@
+{
+  "relationships": [
+    {
+      "relationshipName": "questions",
+      "otherEntityName": "question",
+      "relationshipType": "one-to-many",
+      "otherEntityRelationshipName": "surveys",
+      "relationshipId": 1
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "type",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "points",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "promo",
+      "fieldType": "String"
+    }
+  ],
+  "changelogDate": "20161114171940",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "survey"
+}

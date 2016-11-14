@@ -1,0 +1,43 @@
+{
+  "relationships": [
+    {
+      "relationshipName": "surveys",
+      "otherEntityName": "survey",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "id",
+      "relationshipId": 1
+    }
+  ],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "label",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "answer1",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "answer2",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "counter1",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "counter2",
+      "fieldType": "Integer"
+    }
+  ],
+  "changelogDate": "20161114171941",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "question"
+}
