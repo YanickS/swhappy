@@ -43,14 +43,14 @@ public class Survey implements Serializable {
     private Set<Question> questions = new HashSet<>();
     
     @ManyToOne
-    private User user;
+    private Entreprise entreprise;
     
-    public User getUser() {
-		return user;
+    public Entreprise getEntreprise() {
+		return entreprise;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setEntreprise(Entreprise entreprise) {
+		this.entreprise = entreprise;
 	}
 
     public Long getId() {

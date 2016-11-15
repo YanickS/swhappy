@@ -154,7 +154,8 @@ public class AccountResourceIntTest {
             null,                   // createdBy
             null,                   // createdDate
             null,                   // lastModifiedBy
-            null                    // lastModifiedDate
+            null,                    // lastModifiedDate
+            null, null
         );
 
         restMvc.perform(
@@ -184,7 +185,8 @@ public class AccountResourceIntTest {
             null,                   // createdBy
             null,                   // createdDate
             null,                   // lastModifiedBy
-            null                    // lastModifiedDate
+            null,                    // lastModifiedDate
+            null, null
         );
 
         restUserMockMvc.perform(
@@ -214,7 +216,8 @@ public class AccountResourceIntTest {
             null,               // createdBy
             null,               // createdDate
             null,               // lastModifiedBy
-            null                // lastModifiedDate
+            null,                    // lastModifiedDate
+            null, null
         );
 
         restUserMockMvc.perform(
@@ -244,7 +247,8 @@ public class AccountResourceIntTest {
             null,               // createdBy
             null,               // createdDate
             null,               // lastModifiedBy
-            null                // lastModifiedDate
+            null,                    // lastModifiedDate
+            null, null
         );
 
         restUserMockMvc.perform(
@@ -275,12 +279,13 @@ public class AccountResourceIntTest {
             null,                   // createdBy
             null,                   // createdDate
             null,                   // lastModifiedBy
-            null                    // lastModifiedDate
+            null,                    // lastModifiedDate
+            null, null
         );
 
         // Duplicate login, different e-mail
         ManagedUserVM duplicatedUser = new ManagedUserVM(validUser.getId(), validUser.getLogin(), validUser.getPassword(), validUser.getAge(), validUser.getScore(), validUser.getSexe(), validUser.getLogin(), validUser.getLastName(),
-            "alicejr@example.com", true, validUser.getLangKey(), validUser.getAuthorities(), validUser.getCreatedBy(), validUser.getCreatedDate(), validUser.getLastModifiedBy(), validUser.getLastModifiedDate());
+            "alicejr@example.com", true, validUser.getLangKey(), validUser.getAuthorities(), validUser.getCreatedBy(), validUser.getCreatedDate(), validUser.getLastModifiedBy(), validUser.getLastModifiedDate(), validUser.getSurvey(), validUser.getEntreprise());
 
         // Good user
         restMvc.perform(
@@ -318,12 +323,13 @@ public class AccountResourceIntTest {
             null,                   // createdBy
             null,                   // createdDate
             null,                   // lastModifiedBy
-            null                    // lastModifiedDate
+            null,                    // lastModifiedDate
+            null, null
         );
 
         // Duplicate e-mail, different login
         ManagedUserVM duplicatedUser = new ManagedUserVM(validUser.getId(), "johnjr", validUser.getPassword(),  validUser.getAge(), validUser.getScore(), validUser.getSexe(), validUser.getLogin(), validUser.getLastName(),
-            validUser.getEmail(), true, validUser.getLangKey(), validUser.getAuthorities(), validUser.getCreatedBy(), validUser.getCreatedDate(), validUser.getLastModifiedBy(), validUser.getLastModifiedDate());
+            validUser.getEmail(), true, validUser.getLangKey(), validUser.getAuthorities(), validUser.getCreatedBy(), validUser.getCreatedDate(), validUser.getLastModifiedBy(), validUser.getLastModifiedDate(), validUser.getSurvey(), validUser.getEntreprise());
 
         // Good user
         restMvc.perform(
@@ -360,7 +366,8 @@ public class AccountResourceIntTest {
             null,                   // createdBy
             null,                   // createdDate
             null,                   // lastModifiedBy
-            null                    // lastModifiedDate
+            null,                    // lastModifiedDate
+            null, null
         );
 
         restMvc.perform(
@@ -386,7 +393,7 @@ public class AccountResourceIntTest {
             true,                   // activated
             "fr",                   // langKey
             new HashSet<>(Arrays.asList(AuthoritiesConstants.USER)),
-            0, "M", 20
+            0, "M", 20, null, null
         );
 
         restUserMockMvc.perform(

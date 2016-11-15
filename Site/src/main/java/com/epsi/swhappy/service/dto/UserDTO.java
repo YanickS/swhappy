@@ -3,6 +3,8 @@ package com.epsi.swhappy.service.dto;
 import com.epsi.swhappy.config.Constants;
 
 import com.epsi.swhappy.domain.Authority;
+import com.epsi.swhappy.domain.Entreprise;
+import com.epsi.swhappy.domain.Survey;
 import com.epsi.swhappy.domain.User;
 
 import org.hibernate.validator.constraints.Email;
@@ -43,6 +45,10 @@ public class UserDTO {
     private String langKey;
 
     private Set<String> authorities;
+    
+    private Set<Survey> survey;
+    
+    private Entreprise entreprise;
 
     public UserDTO() {
     }
@@ -51,11 +57,11 @@ public class UserDTO {
         this(user.getLogin(), user.getFirstName(), user.getLastName(),
             user.getEmail(), user.getActivated(), user.getLangKey(),
             user.getAuthorities().stream().map(Authority::getName)
-                .collect(Collectors.toSet()), user.getScore(), user.getSexe(), user.getAge());
+                .collect(Collectors.toSet()), user.getScore(), user.getSexe(), user.getAge(), user.getSurvey(), user.getEntreprise());
     }
 
     public UserDTO(String login, String firstName, String lastName,
-        String email, boolean activated, String langKey, Set<String> authorities, int score, String sexe, int age) {
+        String email, boolean activated, String langKey, Set<String> authorities, int score, String sexe, int age, Set<Survey> survey, Entreprise entreprise) {
 
         this.login = login;
         this.firstName = firstName;
@@ -67,6 +73,8 @@ public class UserDTO {
         this.score = score;
         this.sexe = sexe;
         this.age = age;
+        this.survey = survey;
+        this.entreprise = entreprise;
     }
 
 
@@ -98,6 +106,10 @@ public class UserDTO {
         return authorities;
     }
     
+    public Set<Survey> getSurvey() {
+        return survey;
+    }
+    
     public int getAge() {
 		return age;
 	}
@@ -108,6 +120,10 @@ public class UserDTO {
 
 	public String getSexe() {
 		return sexe;
+	}
+	
+	public Entreprise getEntreprise(){
+		return entreprise;
 	}
 
     @Override

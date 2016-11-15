@@ -53,5 +53,9 @@
         timeToLiveSeconds="3600">
     </cache>
 
+    <cache name="com.epsi.swhappy.domain.Entreprise"
+        timeToLiveSeconds="3600">
+    </cache>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </ehcache>

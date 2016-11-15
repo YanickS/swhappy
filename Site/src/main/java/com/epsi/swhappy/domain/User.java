@@ -94,7 +94,26 @@ public class User extends AbstractAuditingEntity implements Serializable {
         inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "name")})
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Authority> authorities = new HashSet<>();
+    
+    @ManyToMany
+    @JoinTable(
+        name = "user_survey",
+        joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+        inverseJoinColumns = {@JoinColumn(name = "survey_id", referencedColumnName = "id")})
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Survey> survey = new HashSet<>();
+    
+    @ManyToOne
+    private Entreprise entreprise;
+    
+    public Entreprise getEntreprise() {
+		return entreprise;
+	}
 
+	public void setEntreprise(Entreprise entreprise) {
+		this.entreprise = entreprise;
+	}
+	
     public Long getId() {
         return id;
     }
@@ -187,9 +206,17 @@ public class User extends AbstractAuditingEntity implements Serializable {
     public Set<Authority> getAuthorities() {
         return authorities;
     }
+    
+    public Set<Survey> getSurvey() {
+        return survey;
+    }
 
     public void setAuthorities(Set<Authority> authorities) {
         this.authorities = authorities;
+    }
+    
+    public void setSurvey(Set<Survey> survey) {
+        this.survey = survey;
     }
     
     public String getSexe() {

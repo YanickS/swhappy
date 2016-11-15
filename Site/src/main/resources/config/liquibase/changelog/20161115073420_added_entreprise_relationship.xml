@@ -5,13 +5,13 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
       <!-- Constrainte for Survey creation -->
-    <changeSet id="20161114171940"  author="yanick">
-    	<addColumn tableName="survey">
+    <changeSet id="20161115073420"  author="yanick">
+    	<addColumn tableName="jhi_user">
 	        <column name="entreprise_id" type="bigint" />
 	    </addColumn>
 	    <addForeignKeyConstraint baseColumnNames="entreprise_id"
-                                 baseTableName="survey"
-                                 constraintName="fk_entreprise_survey_id"
+                                 baseTableName="jhi_user"
+                                 constraintName="fk_entreprise_user_id"
                                  referencedColumnNames="id"
                                  referencedTableName="entreprise"/>
     </changeSet>

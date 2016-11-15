@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+      <!-- Constrainte for survey creation -->
+    <changeSet id="20161114171940-3"  author="yanick">
+    	
+    	<createTable tableName="user_survey">
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="survey_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="user_id, survey_id" tableName="user_survey"/>
+
+        <addForeignKeyConstraint baseColumnNames="survey_id"
+                                 baseTableName="user_survey"
+                                 constraintName="fk_survey_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="survey"/>
+
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="user_survey"
+                                 constraintName="fk_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+                                 
+    </changeSet>
+</databaseChangeLog>

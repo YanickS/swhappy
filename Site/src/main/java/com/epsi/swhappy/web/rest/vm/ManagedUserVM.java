@@ -4,6 +4,8 @@ import java.time.ZonedDateTime;
 
 import java.util.Set;
 
+import com.epsi.swhappy.domain.Entreprise;
+import com.epsi.swhappy.domain.Survey;
 import com.epsi.swhappy.domain.User;
 import com.epsi.swhappy.service.dto.UserDTO;
 import javax.validation.constraints.NotNull;
@@ -45,8 +47,8 @@ public class ManagedUserVM extends UserDTO {
 
     public ManagedUserVM(Long id, String login, String password, int age, int score, String sexe, String firstName, String lastName,
                          String email, boolean activated, String langKey, Set<String> authorities,
-                         String createdBy, ZonedDateTime createdDate, String lastModifiedBy, ZonedDateTime lastModifiedDate) {
-        super(login, firstName, lastName, email, activated, langKey, authorities, score, sexe, age);
+                         String createdBy, ZonedDateTime createdDate, String lastModifiedBy, ZonedDateTime lastModifiedDate, Set<Survey> survey, Entreprise entreprise) {
+        super(login, firstName, lastName, email, activated, langKey, authorities, score, sexe, age, survey, entreprise);
         this.id = id;
         this.createdBy = createdBy;
         this.createdDate = createdDate;
