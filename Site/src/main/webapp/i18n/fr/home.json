@@ -1,7 +1,13 @@
 {
     "home": {
-        "title": "Bienvenue, Java Hipster !",
-        "subtitle": "Ceci est votre page d'accueil",
+        "title": "Bienvenue, Sur Sw'Happy",
+        "subtitle": "Créer des sondages simples/répondez du bout des doigts !",
+        "pro": "Professionnels :",
+        "description": "Sw'Happy vous permet de créer des sondages simples dont chacunes des questions ne comportent que 2 choix possibles. Cette stratégie a pour objectif de rendre vos sondages plus intéractifs et rapides à agréables pour vos utilisateurs.",
+        "slogan": "Captez leurs attentions pour mieux connaitre leurs envies !",
+        "particulier": "Particuliers :",
+        "description2": "L'application Sw'Happy sera disponible sur toutes les plateformes mobiles et tablettes (IOS, Android, Windows). Répondez du bout des doigts aux sondages proposés et profitez de code promotionnels dans les entreprises partenaires.",
+        "slogan2": "Envie d'avoir 10% sur votre prochaine commande au Mc do ? N'hésitez plus !",
         "logged": {
             "message": "Vous êtes connecté en tant que \"{{username}}\"."
         },
