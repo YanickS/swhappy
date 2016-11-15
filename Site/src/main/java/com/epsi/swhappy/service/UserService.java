@@ -1,6 +1,7 @@
 package com.epsi.swhappy.service;
 
 import com.epsi.swhappy.domain.Authority;
+import com.epsi.swhappy.domain.Entreprise;
 import com.epsi.swhappy.domain.User;
 import com.epsi.swhappy.repository.AuthorityRepository;
 import com.epsi.swhappy.repository.UserRepository;
@@ -79,10 +80,11 @@ public class UserService {
     }
 
     public User createUser(String login, String password, int age, int score, String sexe, String firstName, String lastName, String email,
-        String langKey) {
+        String langKey, Entreprise entreprise) {
 
         User newUser = new User();
-        Authority authority = authorityRepository.findOne(AuthoritiesConstants.USER);
+        Authority authorityUser = authorityRepository.findOne(AuthoritiesConstants.USER);
+        Authority authorityEnt = authorityRepository.findOne(AuthoritiesConstants.ENTREPRISE);
         Set<Authority> authorities = new HashSet<>();
         String encryptedPassword = passwordEncoder.encode(password);
         newUser.setLogin(login);
@@ -99,7 +101,13 @@ public class UserService {
         newUser.setScore(score);
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
-        authorities.add(authority);
+        if(entreprise != null){
+        	authorities.add(authorityUser);
+        	authorities.add(authorityEnt);
+        	newUser.setEntreprise(entreprise);
+        } else {
+        	authorities.add(authorityUser);
+        }
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
         log.debug("Created Information for User: {}", newUser);
@@ -134,12 +142,13 @@ public class UserService {
         return user;
     }
 
-    public void updateUser(String firstName, String lastName, String email, String langKey) {
+    public void updateUser(String firstName, String lastName, String email, String langKey, int age) {
         userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).ifPresent(u -> {
             u.setFirstName(firstName);
             u.setLastName(lastName);
             u.setEmail(email);
             u.setLangKey(langKey);
+            u.setAge(age);
             userRepository.save(u);
             log.debug("Changed Information for User: {}", u);
         });

@@ -50,6 +50,32 @@
                     </div>
                 </div>
                 <div class="form-group">
+      				<label class="control-label" for="sexe" data-translate="global.form.sexe">Sexe</label>
+       				<div class="radio radio-primary" required>
+	          			<label>
+		            		<input type="radio" ng-model="vm.registerAccount.sexe" name="sexeRadios" value="Homme" checked>
+		           			Homme
+	          			</label>
+	          			<label>
+			           		<input type="radio" ng-model="vm.registerAccount.sexe" name="sexeRadios" value="Femme">
+			           		Femme
+		            	</label>
+       				</div>
+      			</div>
+      			<div class="form-group">
+                    <label class="control-label" for="age" data-translate="age">Age</label>
+                    <input type="number" class="form-control" id="age" name="age" placeholder="{{'global.form.age.placeholder' | translate}}"
+                           ng-model="vm.registerAccount.age" min=1 max=100 required>
+                    <p class="help-block"
+         	           ng-show="form.age.$error.required" data-translate="global.messages.validate.age.required">
+                           Your age is required.
+                    </p>
+                    <p class="help-block"
+         	           ng-show="form.age.$error.age" data-translate="global.messages.validate.age.invalid">
+                           Your age is invalid
+                    </p>
+                </div>
+                <div class="form-group">
                     <label class="control-label" for="email" data-translate="global.form.email">E-mail</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="{{'global.form.email.placeholder' | translate}}"
                            ng-model="vm.registerAccount.email" ng-minlength=5 ng-maxlength=100 required>
@@ -111,13 +137,65 @@
                         </p>
                     </div>
                 </div>
-
-                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" data-translate="register.form.button">Register</button>
+				
+				<br/>
+				<div class="checkbox">
+          			<label>
+            			<input ng-model="vm.forEntreprise" type="checkbox"> Je représente une entreprise
+          			</label>
+          		</div>
+				
+				<div ng-if=vm.forEntreprise class="form-group">
+	                <label class="control-label" for="name" data-translate="global.form.nameentreprise">Entreprise</label>
+	                <input type="text" class="form-control" id="name" name="name" placeholder="{{'global.form.nameentreprise.placeholder' | translate}}"
+	                       ng-model="vm.registerAccount.entreprise.name" ng-maxlength=50 required>
+	                <div ng-show="form.name.$dirty && form.name.$invalid">
+	                  	<p class="help-block" ng-show="form.name.$error.required" data-translate="global.messages.validate.nameentreprise.required">
+	                        Your entreprise name is required.
+	                    </p>
+	                </div>
+	            </div>
+	            
+	            <div ng-if=vm.forEntreprise class="form-group">
+	                <label class="control-label" for="siret" data-translate="global.form.siret">N° Siret</label>
+	                <input type="number" class="form-control" id="siret" name="siret" placeholder="{{'global.form.siret.placeholder' | translate}}"
+	                       ng-model="vm.registerAccount.entreprise.siret" ng-minlength=14 ng-maxlength=14 required>
+	                <div ng-show="form.siret.$dirty && form.siret.$invalid">
+	                  	<p class="help-block" ng-show="form.siret.$error.required" data-translate="global.messages.validate.siret.required">
+	                        Your siret is required.
+	                    </p>
+						<p class="help-block"
+							ng-show="form.siret.$error.minlength || form.siret.$error.maxlength"
+							data-translate="global.messages.validate.siret.length">Your
+							siret need 14 characters.</p>
+					</div>
+	            </div>
+	            
+	            <div ng-if=vm.forEntreprise class="form-group">
+	                <label class="control-label" for="ville" data-translate="global.form.city">Localisation (Ville)</label>
+	                <input type="text" class="form-control" id="city" name="city" placeholder="{{'global.form.city.placeholder' | translate}}"
+	                       ng-model="vm.registerAccount.entreprise.city" ng-maxlength=50 required>
+	                <div ng-show="form.city.$dirty && form.city.$invalid">
+	                  	<p class="help-block" ng-show="form.city.$error.required" data-translate="global.messages.validate.city.required">
+	                        City location is required.
+	                    </p>
+	                </div>
+	            </div>
+	            
+	            <div ng-if=vm.forEntreprise class="form-group">
+	                <label class="control-label" for="activity" data-translate="global.form.activity">Activity</label>
+	                <textarea class="form-control" rows="4" maxlength="254" id="activity"  ng-model="vm.registerAccount.entreprise.activity"></textarea>
+	            </div>
+          		
+                <div style="text-align:center;">
+                	<br/>
+                	<button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" data-translate="register.form.button">Register</button>
+            	</div>
             </form>
             <p></p>
-            <div class="alert alert-warning" data-translate="global.messages.info.authenticated" translate-compile>
+            <!--<div class="alert alert-warning" data-translate="global.messages.info.authenticated" translate-compile>
                 If you want to <a class="alert-link" href="" ng-click="vm.login()">sign in</a>, you can try the default accounts:<br/>- Administrator (login="admin" and password="admin") <br/>- User (login="user" and password="user").
-            </div>
+            </div> -->
         </div>
     </div>
 </div>

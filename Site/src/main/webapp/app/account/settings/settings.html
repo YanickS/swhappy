@@ -1,7 +1,7 @@
 <div>
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h2 data-translate="settings.title" translate-values="{username: '{{vm.settingsAccount.login}}'}">User settings for [<b>{{vm.settingsAccount.login}}</b>]</h2>
+            <h2 data-translate="settings.title" translate-values="{username: '{{vm.settingsAccount.login}}', score: '{{vm.score}}'}">User settings for [<b>{{vm.settingsAccount.login}}</b>]</h2>
 
             <div class="alert alert-success" ng-show="vm.success" data-translate="settings.messages.success">
                 <strong>Settings saved!</strong>
@@ -50,6 +50,19 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="control-label" for="age" data-translate="global.form.age">Age</label>
+                    <input type="number" class="form-control" id="age" name="age" placeholder="{{'global.form.age.placeholder' | translate}}"
+                           ng-model="vm.settingsAccount.age" min=1 max=100 required>
+                    <p class="help-block"
+         	           ng-show="form.age.$error.required" data-translate="global.messages.validate.age.required">
+                           Your age is required.
+                    </p>
+                    <p class="help-block"
+         	           ng-show="form.age.$error.age" data-translate="global.messages.validate.age.invalid">
+                           Your age is invalid
+                    </p>
+                </div>
+                <div class="form-group">
                     <label class="control-label" for="email" data-translate="global.form.email">E-mail</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="{{'global.form.email.placeholder' | translate}}"
                            ng-model="vm.settingsAccount.email" ng-minlength=5 ng-maxlength=100 required maxlength="100">
@@ -76,8 +89,10 @@
                     <label for="langKey" data-translate="settings.form.language">Language</label>
                     <select id="langKey" name="langKey" class="form-control" ng-model="vm.settingsAccount.langKey" ng-controller="JhiLanguageController as languageVm" ng-options="code as (code | findLanguageFromKey) for code in languageVm.languages"></select>
                 </div>
-
-                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" data-translate="settings.form.button">Save</button>
+				
+				<div class="form-group" style="text-align:center;">
+                	<button type="submit" ng-disabled="form.$invalid" class="btn btn-primary" data-translate="settings.form.button">Save</button>
+            	</div>
             </form>
         </div>
     </div>
