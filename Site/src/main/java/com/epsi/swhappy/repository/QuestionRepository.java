@@ -11,5 +11,11 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public interface QuestionRepository extends JpaRepository<Question,Long> {
+	
+	//@Query("select distinct question from question question where question.surveys.id =:id")
+	@Query(value = "SELECT * "
+			+ "FROM question as question "
+			+ "WHERE question.surveys_id = ?1 ", nativeQuery = true)
+	List<Question> findQuestionsByIdSurvey(Long id);
 
 }

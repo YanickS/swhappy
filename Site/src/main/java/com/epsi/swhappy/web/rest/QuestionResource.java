@@ -102,6 +102,20 @@ public class QuestionResource {
                 HttpStatus.OK))
             .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
+    
+    /**
+     * GET  /questions/:id : get the "id" question.
+     *
+     * @param id the id of the question to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the question, or with status 404 (Not Found)
+     */
+    @GetMapping("/questions/survey/{id}")
+    @Timed
+    public List<Question> getQuestionBySurveyId(@PathVariable Long id) {
+        log.debug("REST request to get Question : {}", id);
+        List<Question> questions = questionRepository.findQuestionsByIdSurvey(id);
+        return questions;
+    }
 
     /**
      * DELETE  /questions/:id : delete the "id" question.

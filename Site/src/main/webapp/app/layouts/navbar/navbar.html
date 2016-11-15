@@ -20,6 +20,12 @@
                         <span class="hidden-sm" data-translate="global.menu.home">Home</span>
                     </a>
                 </li>
+                <li has-authority="ROLE_ENTREPRISE" ng-class="{active: vm.$state.includes('questionnaire')}" ng-switch-when="true">
+                    <a ui-sref="questionnaire" ng-click="vm.collapseNavbar()">
+                        <span class="glyphicon glyphicon-file"></span>
+                        <span class="hidden-sm" data-translate="global.menu.questionnaire">Questionnaire</span>
+                    </a>
+                </li>
                 <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
                 <li has-authority="ROLE_ADMIN" ng-class="{active: vm.$state.includes('entity')}" ng-switch-when="true" uib-dropdown dropdown>
                     <a class="dropdown-toggle" uib-dropdown-toggle href="" id="entity-menu">
