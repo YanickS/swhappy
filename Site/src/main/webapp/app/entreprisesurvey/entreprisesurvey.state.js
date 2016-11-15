@@ -11,10 +11,10 @@
         $stateProvider
         .state('entreprisesurvey', {
             parent: 'app',
-            url: '/create_survey',
+            url: '/surveyManagement',
             data: {
                 authorities: ['ROLE_ENTREPRISE'],
-                pageTitle: 'swhappyApp.question.home.title'
+                pageTitle: 'swhappyApp.entreprisesurvey.home.title'
             },
             views: {
                 'content@': {
@@ -25,7 +25,7 @@
             },
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
-                    $translatePartialLoader.addPart('question');
+                    $translatePartialLoader.addPart('entreprisesurvey');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
