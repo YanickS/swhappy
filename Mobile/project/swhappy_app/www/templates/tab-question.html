@@ -2,9 +2,9 @@
   <ion-content class="padding">
     <div class="td-title">
       <div class="row">
-        <div class="col">Master: <span>{{ cards.master.length }}</span></div>
-        <div class="col">Cards: <span>{{ cards.active.length }}</span></div>
-        <div class="col">Discards: <span>{{ cards.discards.length }}</span></div>
+       <!-- <div class="col">Nombre de questions: <span>{{ cards.master.length }}</span></div> -->
+        <div class="col">Questions restantes: <span>{{ cards.active.length }}</span></div>
+       <!-- <div class="col">Discards: <span>{{ cards.discards.length }}</span></div> -->
       </div>
       <div class="row">
         <div class="col">Liked: <span>{{ cards.liked.length }}</span></div>
@@ -28,7 +28,7 @@
                 - onClickTransitionOut is found in ionic.tdcards.js
                 - Animation can be customized by changing defaults
                 ************************* -->
-                <div class="discard" ng-click="onClickTransitionOut(card)">DISCARD</div>
+                <div class="discard" ng-click="onClickTransitionOut(card)">TEST</div>
                 <img ng-src="{{ card.image }}">
               </div>
             </td-card>
