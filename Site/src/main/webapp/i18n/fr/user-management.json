@@ -25,6 +25,10 @@
         "createdBy": "Créé par",
         "createdDate": "Créé le",
         "lastModifiedBy": "Modifié par",
-        "lastModifiedDate": "Modifié le"
+        "lastModifiedDate": "Modifié le",
+        "entreprise": "Entreprise",
+        "age": "Age",
+        "score": "Score",
+        "sexe": "Sexe"
     }
 }
