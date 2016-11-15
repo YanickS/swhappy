@@ -2,7 +2,12 @@ angular.module('starter.controllers', [])
 
 .controller('SurveyCtrl', function($scope) {})
 
-.controller('QuestionCtrl', function($scope, TDCardDelegate, $timeout) {
+.controller('QuestionCtrl', function($scope, TDCardDelegate, $timeout, QuestionService) {
+
+QuestionService.getAll().then(function(result){
+	$scope.questions = result.data;
+	console.log($scope.questions);
+});
 
   var cardTypes = [
     { image: 'http://c4.staticflickr.com/4/3924/18886530069_840bc7d2a5_n.jpg' },
