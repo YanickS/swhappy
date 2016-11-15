@@ -26,18 +26,20 @@
         </dd>
         <dt><span data-translate="swhappyApp.question.surveys">Surveys</span></dt>
         <dd>
-            <a ui-sref="survey-detail({id:vm.question.surveys.id})">{{vm.question.surveys.id}}</a>
+            <a ui-sref="survey-detail({id:vm.question.surveys.id})">{{vm.question.surveys.title}}</a>
         </dd>
     </dl>
 
-    <button type="submit"
+	<div style="text-align:center;">
+		<button type="submit"
             ui-sref="{{ vm.previousState }}"
             class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
-    </button>
-
-    <button type="button" ui-sref="question-detail.edit({id:vm.question.id})" class="btn btn-primary">
-        <span class="glyphicon glyphicon-pencil"></span>
-        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
-    </button>
+	        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+	    </button>
+	
+	    <button type="button" ui-sref="question-detail.edit({id:vm.question.id})" class="btn btn-primary">
+	        <span class="glyphicon glyphicon-pencil"></span>
+	        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+	    </button>
+	</div>
 </div>

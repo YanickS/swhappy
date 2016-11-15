@@ -3,25 +3,25 @@
         "question" : {
             "home": {
                 "title": "Questions",
-                "createLabel": "Créer un nouveau Question",
-                "createOrEditLabel": "Créer ou éditer un Question",
-                "search": "Recherche pour Question"
+                "createLabel": "Créer une nouvelle Question",
+                "createOrEditLabel": "Créer/éditer une Question",
+                "search": "Recherche d'une Question"
             },
-            "created": "Un nouveau Question a été créé avec l'identifiant {{ param }}",
-            "updated": "Le Question avec l'identifiant {{ param }} a été mis à jour",
-            "deleted": "Le Question avec l'identifiant {{ param }} a été supprimé",
+            "created": "Une nouvelle Question a été créée avec l'identifiant {{ param }}",
+            "updated": "La Question avec l'identifiant {{ param }} a été mise à jour",
+            "deleted": "La Question avec l'identifiant {{ param }} a été supprimée",
             "delete": {
-                "question": "Etes-vous certain de vouloir supprimer le Question {{ id }} ?"
+                "question": "Etes-vous certain de vouloir supprimer la Question {{ id }} ?"
             },
             "detail": {
                 "title": "Question"
             },
-            "label": "Label",
-            "answer1": "Answer 1",
-            "answer2": "Answer 2",
-            "counter1": "Counter 1",
-            "counter2": "Counter 2",
-            "surveys": "Surveys"
+            "label": "Libellé",
+            "answer1": "Réponse 1",
+            "answer2": "Réponse 2",
+            "counter1": "Compteur 1",
+            "counter2": "Compteur 2",
+            "surveys": "Questionnaire"
         }
     }
 }

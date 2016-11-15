@@ -26,15 +26,15 @@
                      />
         </div>
         <div class="form-group">
-            <label class="control-label" data-translate="swhappyApp.question.answer2" for="field_answer2">Answer 2</label>
-            <input type="text" class="form-control" name="answer2" id="field_answer2"
-                    ng-model="vm.question.answer2"
-                     />
-        </div>
-        <div class="form-group">
             <label class="control-label" data-translate="swhappyApp.question.counter1" for="field_counter1">Counter 1</label>
             <input type="number" class="form-control" name="counter1" id="field_counter1"
                     ng-model="vm.question.counter1"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="swhappyApp.question.answer2" for="field_answer2">Answer 2</label>
+            <input type="text" class="form-control" name="answer2" id="field_answer2"
+                    ng-model="vm.question.answer2"
                      />
         </div>
         <div class="form-group">
@@ -46,12 +46,12 @@
 
         <div class="form-group">
             <label data-translate="swhappyApp.question.surveys" for="field_surveys">Surveys</label>
-            <select class="form-control" id="field_surveys" name="surveys" ng-model="vm.question.surveys" ng-options="survey as survey.id for survey in vm.surveys track by survey.id">
+            <select class="form-control" id="field_surveys" name="surveys" ng-model="vm.question.surveys" ng-options="survey as survey.title for survey in vm.surveys track by survey.id">
                 <option value=""></option>
             </select>
         </div>
     </div>
-    <div class="modal-footer">
+    <div class="modal-footer" style="text-align:center;">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
         </button>

@@ -23,6 +23,7 @@
                     <th><span data-translate="swhappyApp.survey.type">Type</span></th>
                     <th><span data-translate="swhappyApp.survey.points">Points</span></th>
                     <th><span data-translate="swhappyApp.survey.promo">Promo</span></th>
+                    <th><span data-translate="swhappyApp.survey.entreprise">Entreprise</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -33,6 +34,9 @@
                     <td>{{survey.type}}</td>
                     <td>{{survey.points}}</td>
                     <td>{{survey.promo}}</td>
+                    <td>
+                        <a ui-sref="entreprise-detail({id:survey.entreprise.id})">{{survey.entreprise.name}}</a>
+                    </td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"
