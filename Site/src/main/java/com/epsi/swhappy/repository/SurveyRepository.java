@@ -3,6 +3,7 @@ package com.epsi.swhappy.repository;
 import com.epsi.swhappy.domain.Survey;
 
 import org.springframework.data.jpa.repository.*;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -25,5 +26,10 @@ public interface SurveyRepository extends JpaRepository<Survey,Long> {
 				+ "Where user_id = ?1 "
 			+")", nativeQuery = true)
 	List<Survey> findAllByUserId(Long id);
+
+	@Query(value = "INSERT INTO user_survey (user_id, survey_id) VALUES (?2, ?1)", nativeQuery = true)
+	@Modifying
+	@Transactional
+	void completeSurveyByUder(long idSurvey, long idUser);
 
 }

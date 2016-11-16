@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.ResponseEntity.BodyBuilder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.inject.Inject;
@@ -48,6 +49,20 @@ public class SurveyResource {
         return ResponseEntity.created(new URI("/api/surveys/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert("survey", result.getId().toString()))
             .body(result);
+    }
+    
+    /**
+     * POST  /surveys : Create a new survey.
+     *
+     * @param survey the survey to create
+     * @return 
+     * @throws URISyntaxException if the Location URI syntax is incorrect
+     */
+    @PostMapping("/surveyComplete/{idSurvey}/{idUser}")
+    @Timed
+    public void completeSurvey(@PathVariable long idSurvey, @PathVariable long idUser) throws URISyntaxException {
+        log.debug("REST request complete");
+        surveyRepository.completeSurveyByUder(idSurvey, idUser);
     }
 
     /**
