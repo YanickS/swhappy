@@ -3,10 +3,10 @@
     <div class="td-title">
       <div class="row">
        <!-- <div class="col">Nombre de questions: <span>{{ cards.master.length }}</span></div> -->
-        <div class="col">Questions restantes: <span>{{ cards.active.length }}</span></div>
+       <div class="col">Questions restantes: <span>{{ cards.active.length }}</span></div>
        <!-- <div class="col">Discards: <span>{{ cards.discards.length }}</span></div> -->
-      </div>
-    </div>
+     </div>
+   </div>
       <!-- *************************
         TD Cards
         - We start off with an ng-if so that the cards are not generated
@@ -16,8 +16,8 @@
             <td-cards>
               <td-card ng-repeat="card in cards.active" on-destroy="cardDestroyed($index)" on-swipe-left="cardSwipedLeft($index)" on-swipe-right="cardSwipedRight($index)">
                 <div class="image" ng-controller="CardCtrl">
-                  <div class="no-text">{{ card.response_left }}</div>
-                  <div class="yes-text">{{ card.response_right }}</div>
+                  <div class="no-text">{{ card.response_right }}</div>
+                  <div class="yes-text">{{ card.response_left }}</div>
               <!-- *************************
                 Discard
                 - The card is removed from the deck and a fly away animation is triggered.
@@ -34,9 +34,10 @@
             - 'refreshCards()' reloads all cards that have NOT been discarded.
             ************************* -->
             <td-card id="end-card" drag="false">
-              <i class="icon ion-ios-refresh disable-user-behavior" ng-click="refreshCards()"></i>
+                <div class="end-quest">Fin du questionnaire</div>
+              <a class="icon ion-ios-undo-outline" href="#/tab/survey" ng-click="end()"></a>
             </td-card>
           </td-cards>
         </div>
-    </ion-content>
-</ion-view>
+      </ion-content>
+    </ion-view>
