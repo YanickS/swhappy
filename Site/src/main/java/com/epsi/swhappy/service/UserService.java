@@ -132,6 +132,12 @@ public class UserService {
             );
             user.setAuthorities(authorities);
         }
+        user.setAge(managedUserVM.getAge());
+        user.setScore(managedUserVM.getScore());
+        user.setSexe(managedUserVM.getSexe());
+        if(managedUserVM.getEntreprise() != null){
+        	user.setEntreprise(managedUserVM.getEntreprise());
+        }
         String encryptedPassword = passwordEncoder.encode(RandomUtil.generatePassword());
         user.setPassword(encryptedPassword);
         user.setResetKey(RandomUtil.generateResetKey());
@@ -155,7 +161,7 @@ public class UserService {
     }
 
     public void updateUser(Long id, String login, String firstName, String lastName, String email,
-        boolean activated, String langKey, Set<String> authorities) {
+        boolean activated, String langKey, Set<String> authorities, int age, int score, String sexe, Entreprise entreprise) {
 
         Optional.of(userRepository
             .findOne(id))
@@ -167,6 +173,10 @@ public class UserService {
                 u.setActivated(activated);
                 u.setLangKey(langKey);
                 Set<Authority> managedAuthorities = u.getAuthorities();
+                u.setAge(age);
+                u.setScore(score);
+                u.setSexe(sexe);
+                u.setEntreprise(entreprise);
                 managedAuthorities.clear();
                 authorities.stream().forEach(
                     authority -> managedAuthorities.add(authorityRepository.findOne(authority))

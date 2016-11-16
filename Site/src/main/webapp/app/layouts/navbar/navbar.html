@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand logo" href="#/" ng-click="vm.collapseNavbar()">
-                <img class="logo-img" src="content/images/survey_icon.jpg"/>
+                <img class="logo-img" src="content/images/survey_home.png"/>
                 <span data-translate="global.title">Swhappy</span> <span class="navbar-version">v{{VERSION}}</span>
             </a>
         </div>
@@ -20,8 +20,8 @@
                         <span class="hidden-sm" data-translate="global.menu.home">Home</span>
                     </a>
                 </li>
-                <li has-authority="ROLE_ENTREPRISE" ng-class="{active: vm.$state.includes('questionnaire')}" ng-switch-when="true">
-                    <a ui-sref="questionnaire" ng-click="vm.collapseNavbar()">
+                <li has-authority="ROLE_ENTREPRISE" ng-class="{active: vm.$state.includes('entreprisesurvey')}" ng-switch-when="true">
+                    <a ui-sref="entreprisesurvey" ng-click="vm.collapseNavbar()">
                         <span class="glyphicon glyphicon-file"></span>
                         <span class="hidden-sm" data-translate="global.menu.questionnaire">Questionnaire</span>
                     </a>

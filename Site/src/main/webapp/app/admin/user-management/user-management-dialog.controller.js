@@ -5,16 +5,17 @@
         .module('swhappyApp')
         .controller('UserManagementDialogController',UserManagementDialogController);
 
-    UserManagementDialogController.$inject = ['$stateParams', '$uibModalInstance', 'entity', 'User', 'JhiLanguageService'];
+    UserManagementDialogController.$inject = ['$stateParams', '$uibModalInstance', 'entity', 'User', 'JhiLanguageService', 'Entreprise'];
 
-    function UserManagementDialogController ($stateParams, $uibModalInstance, entity, User, JhiLanguageService) {
+    function UserManagementDialogController ($stateParams, $uibModalInstance, entity, User, JhiLanguageService, Entreprise) {
         var vm = this;
 
-        vm.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+        vm.authorities = ['ROLE_USER', 'ROLE_ADMIN', 'ROLE_ENTREPRISE'];
         vm.clear = clear;
         vm.languages = null;
         vm.save = save;
         vm.user = entity;
+        vm.entreprises = Entreprise.query();
 
 
         JhiLanguageService.getAll().then(function (languages) {

@@ -8,9 +8,9 @@
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entités",
-                "survey": "Survey",
-                "question": "Question",
-                "entreprise": "Entreprise",
+                "survey": "Questionnaires",
+                "question": "Questions",
+                "entreprise": "Entreprises",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -57,7 +57,9 @@
             "siret.placeholder": "N° Siret de votre entreprise",
             "city": "Localisation (Ville)",
             "city.placeholder": "Ville d'implantation",
-            "activity": "Rapide description de l'activité de l'entreprise"
+            "activity": "Rapide description de l'activité de l'entreprise",
+            "score": "Score",
+            "score.placeholder": "Indiquez le score"
         },
         "messages": {
             "info": {
@@ -88,6 +90,10 @@
                 "age" : {
                     "required": "Votre age est requis.",
                     "invalid": "Votre age doit être compris entre 1 et 100"
+                },
+                "score" : {
+                    "required": "Votre score est requis.",
+                    "invalid": "Votre score doit être compris entre 1 et 1000000000"
                 },
                 "nameentreprise" : {
                     "required": "Votre entreprise est requise."

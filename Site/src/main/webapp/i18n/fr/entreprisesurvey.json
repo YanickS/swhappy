@@ -1,0 +1,10 @@
+{
+    "swhappyApp": {
+        "entreprisesurvey" : {
+            "home": {
+                "title": "Gestion des questionnaires",
+                "createLabel": "Ajouter un questionnaire"
+            }
+        }
+    }
+}

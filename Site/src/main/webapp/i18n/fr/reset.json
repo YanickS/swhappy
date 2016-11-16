@@ -1,9 +1,9 @@
 {
     "reset": {
         "request": {
-            "title": "Réinitialiser son mot de passe",
+            "title": "Réinitialiser votre mot de passe",
             "form": {
-                "button": "Réinitialiser le mot de passe"
+                "button": "Réinitialiser"
             },
             "messages": {
                 "info": "Veuillez renseigner l'addresse email utilisée pour vous enregistrer",
@@ -16,7 +16,7 @@
         "finish" : {
             "title": "Réinitialisation du mot de passe",
             "form": {
-                "button": "Réinitialiser le mot de passe"
+                "button": "Réinitialiser"
             },
             "messages": {
                 "info": "Choisir un nouveau mot de passe",

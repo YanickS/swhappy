@@ -3,23 +3,23 @@
         "entreprise" : {
             "home": {
                 "title": "Entreprises",
-                "createLabel": "Créer un nouveau Entreprise",
-                "createOrEditLabel": "Créer ou éditer un Entreprise",
-                "search": "Recherche pour Entreprise"
+                "createLabel": "Créer une nouvelle Entreprise",
+                "createOrEditLabel": "Créer/éditer un Entreprise",
+                "search": "Recherche d'une Entreprise"
             },
-            "created": "Un nouveau Entreprise a été créé avec l'identifiant {{ param }}",
-            "updated": "Le Entreprise avec l'identifiant {{ param }} a été mis à jour",
-            "deleted": "Le Entreprise avec l'identifiant {{ param }} a été supprimé",
+            "created": "Une nouvelle Entreprise a été créée avec l'identifiant {{ param }}",
+            "updated": "L'Entreprise avec l'identifiant {{ param }} a été mise à jour",
+            "deleted": "L'Entreprise avec l'identifiant {{ param }} a été supprimée",
             "delete": {
-                "question": "Etes-vous certain de vouloir supprimer le Entreprise {{ id }} ?"
+                "question": "Etes-vous certain de vouloir supprimer l'Entreprise {{ id }} ?"
             },
             "detail": {
                 "title": "Entreprise"
             },
-            "siret": "Siret",
-            "name": "Name",
-            "activity": "Activity",
-            "city": "City"
+            "siret": "N°Siret",
+            "name": "Nom",
+            "activity": "Description Activité",
+            "city": "Ville"
         }
     }
 }

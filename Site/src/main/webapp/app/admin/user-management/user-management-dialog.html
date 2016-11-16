@@ -59,6 +59,51 @@
             </div>
         </div>
         <div class="form-group">
+      		<label class="control-label" for="sexe" data-translate="userManagement.sexe">Sexe</label>
+       		<div class="radio radio-primary" required>
+		       	<label>
+		       		<input type="radio" ng-model="vm.user.sexe" name="sexeRadios" value="Homme" checked>
+			        	Homme
+		      	</label>
+		      	<label>
+			    	<input type="radio" ng-model="vm.user.sexe" name="sexeRadios" value="Femme">
+			        Femme
+		       	</label>
+     		</div>
+      	</div>
+      	<div class="form-group">
+        	<label class="control-label" for="age" data-translate="userManagement.age">Age</label>
+            <input type="number" class="form-control" id="age" name="age" placeholder="{{'global.form.age.placeholder' | translate}}"
+            	ng-model="vm.user.age" min=1 max=100 required>
+           	<p class="help-block"
+         		ng-show="form.age.$error.required" data-translate="global.messages.validate.age.required">
+                Your age is required.
+            </p>
+            <p class="help-block"
+         		ng-show="form.age.$error.age" data-translate="global.messages.validate.age.invalid">
+                Your age is invalid
+            </p>
+        </div>
+        <div class="form-group">
+        	<label class="control-label" for="score" data-translate="userManagement.score">Score</label>
+            <input type="number" class="form-control" id="score" name="score" placeholder="{{'global.form.score.placeholder' | translate}}"
+            	ng-model="vm.user.score" min=0 max=1000000000 required>
+           	<p class="help-block"
+         		ng-show="form.score.$error.required" data-translate="global.messages.validate.score.required">
+                Score is required.
+            </p>
+            <p class="help-block"
+         		ng-show="form.score.$error.score" data-translate="global.messages.validate.score.invalid">
+                Age is invalid
+            </p>
+        </div>
+         <div class="form-group">
+            <label data-translate="userManagement.entreprise" for="field_entreprise">Entreprise</label>
+            <select class="form-control" id="field_entreprise" name="entreprise" ng-model="vm.user.entreprise" ng-options="entreprise as entreprise.name for entreprise in vm.entreprises track by entreprise.id">
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="form-group">
             <label class="control-label" data-translate="userManagement.email">Email</label>
             <input type="email" class="form-control" name="email"
                    ng-model="vm.user.email" required ng-maxlength="100">
@@ -101,7 +146,7 @@
             </select>
         </div>
     </div>
-    <div class="modal-footer">
+    <div class="modal-footer" style="text-align:center;">
         <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="vm.clear()">
             <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span
             data-translate="entity.action.cancel">Cancel</span>
