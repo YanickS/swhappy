@@ -31,3 +31,39 @@ angular.module('starter.services', [])
 
     return QuestionFactory;
 }]);
+
+.factory('SurveysFactory', ['$http', function($http) {
+
+    var urlBase = 'https://swhappy.herokuapp.com/api/surveys';
+    var SurveysFactory = {};
+
+    SurveysFactory.getSurveys = function () {
+        return $http.get(urlBase);
+    };
+
+    SurveysFactory.getSurvey = function (id) {
+        return $http.get(urlBase + '/' + id);
+    };
+
+    SurveysFactory.insertSurvey = function (question) {
+        return $http.post(urlBase, question);
+    };
+
+    SurveysFactory.updateSurvey = function (question) {
+        return $http.put(urlBase, question)
+    };
+
+    SurveysFactory.deleteSurvey = function (id) {
+        return $http.delete(urlBase + '/' + id);
+    };
+
+    SurveysFactory.getEnterpriseSurvey = function (id) {
+        return $http.get(urlBase + '/entreprise/' + id);
+    };
+
+    SurveysFactory.getUserSurveys = function (id) {
+        return $http.get(urlBase + '/user/' + id);
+    };
+
+    return SurveysFactory;
+}]);

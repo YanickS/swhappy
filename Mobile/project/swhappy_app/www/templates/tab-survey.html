@@ -3,28 +3,8 @@
     <h2>Welcome to Ionic</h2>
     <p>
         <ion-list class="list-borderless">
-            <ion-item class="color-red" style="top: 30px;" ng-click="showSurvey()">
-                Survey1
-                <i class="icon ion-ios-arrow-forward font-130 bold"></i>
-            </ion-item>
-            <ion-item class="color-red" style="top: 30px;" ng-click="showSurvey()">
-                Survey
-                <i class="icon ion-ios-arrow-forward font-130 bold"></i>
-            </ion-item>
-            <ion-item class="color-red" style="top: 30px;" ng-click="showSurvey()">
-                Survey
-                <i class="icon ion-ios-arrow-forward font-130 bold"></i>
-            </ion-item>
-            <ion-item class="color-red" style="top: 30px;" ng-click="showSurvey()">
-                Survey
-                <i class="icon ion-ios-arrow-forward font-130 bold"></i>
-            </ion-item>
-            <ion-item class="color-red" style="top: 30px;" ng-click="showSurvey()">
-                Survey
-                <i class="icon ion-ios-arrow-forward font-130 bold"></i>
-            </ion-item>
-            <ion-item class="color-red" style="top: 30px;" ng-click="showSurvey()">
-                Survey
+            <ion-item  ng-repeat="SurveyFactory in SurveysFactory"class="color-red" style="top: 30px;" href="#/tab/question">
+                {{SurveyFactory.title}}
                 <i class="icon ion-ios-arrow-forward font-130 bold"></i>
             </ion-item>
         </ion-list>

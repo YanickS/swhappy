@@ -1,7 +1,20 @@
 angular.module('starter.controllers', [])
 
-.controller('SurveyCtrl', function ($scope, $ionicModal) {
+.controller('SurveyCtrl', function ($scope,SurveyFactory, $ionicModal) {
 	$scope.showSurvey = showSurvey;
+
+	$scope.date = new Date();
+
+
+
+
+	$scope.getSurveys = (function (response) {
+			$scope.surveys = response.data;
+			console.log($scope.surveys);
+		}, function (error) {
+			console.log ('Error retrieving questions ! ' + error.message);
+		});
+
 
 	function showSurvey() {
 		$ionicModal.fromTemplateUrl('templates/tab-question.html', {
@@ -17,7 +30,7 @@ angular.module('starter.controllers', [])
 		});
 	};
 })
-.controller('QuestionCtrl', function($scope, TDCardDelegate, $timeout, QuestionFactory) {
+.controller('QuestionCtrl', function($scope, TDCardDelegate, $timeout, QuestionFactory,SurveyFactory) {
 
 	var cardTypes;
 
