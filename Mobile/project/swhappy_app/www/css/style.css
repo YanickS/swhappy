@@ -37,18 +37,18 @@ td-card img {
   position: absolute;
   top: 10px;
   left: 10px;
-  font-size: 30px;
-  color: #4CAF50;
-  opacity: 0;
+  font-size: 20px;
+  color: #000;
+  opacity: 100;
 }
 
 .no-text {
   position: absolute;
   top: 10px;
   right: 10px;
-  font-size: 30px;
-  color: #F44336;
-  opacity: 0;
+  font-size: 20px;
+  color: #000;
+  opacity: 100;
 }
 
 .discard {
