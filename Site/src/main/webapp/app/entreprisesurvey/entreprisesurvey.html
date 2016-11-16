@@ -39,6 +39,7 @@
 	<div style="background-color:rgba(225, 240, 249, 0.45);" class="container-fluid col-md-7" ng-if="!vm.page.fullScreen">
 	
 		<div style="text-align:center;">
+			<i ng-click="vm.close()" style="color:grey; float:right; padding-top:10px;" class="material-icons">clear</i>
 			<h3 style="margin-top: 0;padding-top:10px;">{{vm.page.currentSurvey.title}}</h3>
 	    	<span style="font-weight: bold;" data-translate="swhappyApp.entreprisesurvey.create.type">Type</span> :
 	    	<span>{{vm.page.currentSurvey.type}}</span> - 
@@ -58,13 +59,22 @@
 		<div style="margin-bottom: 20px;" ng-repeat="question in vm.page.currentQuestionLst | orderBy: 'label'" class="list-group">
   			<div class="list-group-item">
     			<div class="row-action-primary">
-      				<i style="background-color:#009688;" class="material-icons">equalizer</i>
+      				<i ng-click="vm.displayGraph(question)" style="background-color:#009688;" class="material-icons">equalizer</i>
    				 </div>
     			<div style="min-height:0px;" class="row-content">
       				<div class="action-secondary">
       					<i style="color:#f44336;"class="material-icons" ui-sref="entreprisesurvey.deleteQuestion({id:question.id})">delete</i>
       				</div>
       				<h6 style="font-size:15px;" class="list-group-item-heading">{{question.label}}</h6>
+      				
+      				<div style="width:50%; height:50%; margin:auto;">
+      					<canvas ng-if="vm.chart.questionId == question.id && vm.chart.all != 0" id="pie" class="chart chart-pie"
+  							chart-data="vm.chart.data" chart-labels="vm.chart.labels" chart-options="options">
+						</canvas>
+						<p ng-if="vm.chart.questionId == question.id && vm.chart.all == 0" data-translate="swhappyApp.entreprisesurvey.home.nodata">Nous n'avons pas encore récolté de données</p>
+      				</div>
+      				
+					
 				</div>
   			</div>
   			<div class="list-group-separator"></div>

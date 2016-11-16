@@ -32,4 +32,9 @@ public interface SurveyRepository extends JpaRepository<Survey,Long> {
 	@Transactional
 	void completeSurveyByUder(long idSurvey, long idUser);
 
+	@Query(value = "DELETE FROM user_survey WHERE survey_id=?1", nativeQuery = true)
+	@Modifying
+	@Transactional
+	void deleteForUser(Long id);
+
 }

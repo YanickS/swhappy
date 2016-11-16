@@ -5,7 +5,8 @@
                 "title": "Gestion de vos questionnaires",
                 "createLabel": "Ajouter un questionnaire",
                 "createQuestionLabel": "Ajouter une question",
-                "questionList": "Liste des questions"
+                "questionList": "Liste des questions",
+                "nodata": "Pas encore de données"
             },
             "create": {
             	"label": "Création du questionnaire",

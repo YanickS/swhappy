@@ -1,8 +1,9 @@
 package com.epsi.swhappy.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.epsi.swhappy.domain.Question;
 import com.epsi.swhappy.domain.Survey;
-
+import com.epsi.swhappy.repository.QuestionRepository;
 import com.epsi.swhappy.repository.SurveyRepository;
 import com.epsi.swhappy.repository.UserRepository;
 import com.epsi.swhappy.web.rest.util.HeaderUtil;
@@ -34,6 +35,9 @@ public class SurveyResource {
     
     @Inject
     private UserRepository userRepository;
+    
+    @Inject
+    private QuestionRepository questionRepository;
 
     /**
      * POST  /surveys : Create a new survey.
@@ -166,6 +170,13 @@ public class SurveyResource {
     @Timed
     public ResponseEntity<Void> deleteSurvey(@PathVariable Long id) {
         log.debug("REST request to delete Survey : {}", id);
+        List<Question> questions = questionRepository.findQuestionsByIdSurvey(id);
+        if(!questions.isEmpty()){
+        	for(Question q : questions){
+        		questionRepository.delete(q.getId());
+        	}
+        }
+        surveyRepository.deleteForUser(id);
         surveyRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert("survey", id.toString())).build();
     }
