@@ -30,40 +30,40 @@ angular.module('starter.services', [])
     };
 
     return QuestionFactory;
-}]);
+}])
 
-.factory('SurveysFactory', ['$http', function($http) {
+.factory('SurveyFactory', ['$http', function($http) {
 
     var urlBase = 'https://swhappy.herokuapp.com/api/surveys';
-    var SurveysFactory = {};
+    var SurveyFactory = {};
 
-    SurveysFactory.getSurveys = function () {
+    SurveyFactory.getSurveys = function () {
         return $http.get(urlBase);
     };
 
-    SurveysFactory.getSurvey = function (id) {
+    SurveyFactory.getSurvey = function (id) {
         return $http.get(urlBase + '/' + id);
     };
 
-    SurveysFactory.insertSurvey = function (question) {
+    SurveyFactory.insertSurvey = function (question) {
         return $http.post(urlBase, question);
     };
 
-    SurveysFactory.updateSurvey = function (question) {
+    SurveyFactory.updateSurvey = function (question) {
         return $http.put(urlBase, question)
     };
 
-    SurveysFactory.deleteSurvey = function (id) {
+    SurveyFactory.deleteSurvey = function (id) {
         return $http.delete(urlBase + '/' + id);
     };
 
-    SurveysFactory.getEnterpriseSurvey = function (id) {
+    SurveyFactory.getEnterpriseSurvey = function (id) {
         return $http.get(urlBase + '/entreprise/' + id);
     };
 
-    SurveysFactory.getUserSurveys = function (id) {
+    SurveyFactory.getUserSurveys = function (id) {
         return $http.get(urlBase + '/user/' + id);
     };
 
-    return SurveysFactory;
+    return SurveyFactory;
 }]);

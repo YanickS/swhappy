@@ -1,23 +1,23 @@
 angular.module('starter.controllers', [])
 
-
 .controller('SurveyCtrl', function ($scope,SurveyFactory, $stateParams) {
 
-	$scope.getSurveys = (function (response) {
+
+
+	$scope.getSurveys = function () {
+		SurveyFactory.getSurveys()
+		.then(function (response) {
 			$scope.surveys = response.data;
 			console.log($scope.surveys);
+			console.log ('Questionnaires récupérées');
 		}, function (error) {
-			console.log ('Error retrieving questions ! ' + error.message);
+			console.log ('Erreur lors de la récupération des questionnaires : ' + error.message);
 		});
+	};
 
-
-		$scope.data ={	url_id: 1010,	url_id2: 1011 };
-		console.log($scope.data);
-		})
-
-
+	$scope.data ={	url_id: 1010,	url_id2: 1011 };
+	console.log($scope.data);
 })
-
 
 .controller('QuestionCtrl', function($scope, $stateParams, TDCardDelegate, $timeout, QuestionFactory) {
 
