@@ -11,7 +11,7 @@
             "updated": "La Question avec l'identifiant {{ param }} a été mise à jour",
             "deleted": "La Question avec l'identifiant {{ param }} a été supprimée",
             "delete": {
-                "question": "Etes-vous certain de vouloir supprimer la Question {{ id }} ?"
+                "question": "Etes-vous certain de vouloir supprimer la Question : '{{ id }}' ?"
             },
             "detail": {
                 "title": "Question"

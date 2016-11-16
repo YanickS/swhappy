@@ -40,11 +40,11 @@
 	
 		<div style="text-align:center;">
 			<h3 style="margin-top: 0;padding-top:10px;">{{vm.page.currentSurvey.title}}</h3>
-	    	<span style="font-weight: bold;">Type : </span>
+	    	<span style="font-weight: bold;" data-translate="swhappyApp.entreprisesurvey.create.type">Type</span> :
 	    	<span>{{vm.page.currentSurvey.type}}</span> - 
-	    	<span style="font-weight: bold;">Points : </span>
+	    	<span style="font-weight: bold;" data-translate="swhappyApp.entreprisesurvey.create.points">Points</span> :
 	   		<span>{{vm.page.currentSurvey.points}}</span> - 
-	   		<span style="font-weight: bold;">Code promo : </span>
+	   		<span style="font-weight: bold;" data-translate="swhappyApp.entreprisesurvey.create.promo">Code promo</span> :
 	   		<span>{{vm.page.currentSurvey.promo}}</span>
 	   		<br/><br/>
 			<img ng-src="https://www2.deloitte.com/content/dam/Deloitte/uk/Images/header_images/Campaign/finance/deloitte-uk-deloitte-cfo-survey.jpg/_jcr_content/renditions/cq5dam.web.1400.350.desktop.jpeg" 
@@ -52,7 +52,7 @@
 		</div>
 		
 		<div style="text-align:center;">
-			<h3>Liste des questions</h3>
+			<h3 data-translate="swhappyApp.entreprisesurvey.home.questionList">Liste des questions</h3>
 		</div>
 		
 		<div style="margin-bottom: 20px;" ng-repeat="question in vm.page.currentQuestionLst | orderBy: 'label'" class="list-group">
@@ -62,7 +62,7 @@
    				 </div>
     			<div style="min-height:0px;" class="row-content">
       				<div class="action-secondary">
-      					<i style="color:#f44336;"class="material-icons">delete</i>
+      					<i style="color:#f44336;"class="material-icons" ui-sref="entreprisesurvey.deleteQuestion({id:question.id})">delete</i>
       				</div>
       				<h6 style="font-size:15px;" class="list-group-item-heading">{{question.label}}</h6>
 				</div>
@@ -71,7 +71,7 @@
   		</div>
   		
   		<div style="text-align:center;">
-			<button class="btn btn-primary" >
+			<button class="btn btn-primary" ui-sref="entreprisesurvey.newQuestion({id: vm.page.currentSurvey.id})">
         		<span class="glyphicon glyphicon-plus"></span>
             	<span data-translate="swhappyApp.entreprisesurvey.home.createQuestionLabel">Create new Survey</span>
      		</button>
