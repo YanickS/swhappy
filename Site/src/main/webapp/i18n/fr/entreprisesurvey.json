@@ -3,7 +3,8 @@
         "entreprisesurvey" : {
             "home": {
                 "title": "Gestion de vos questionnaires",
-                "createLabel": "Ajouter un questionnaire"
+                "createLabel": "Ajouter un questionnaire",
+                "createQuestionLabel": "Ajouter une question"
             },
             "create": {
             	"label": "Création du questionnaire",
