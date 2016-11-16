@@ -1,7 +1,22 @@
 angular.module('starter.controllers', [])
 
-.controller('SurveyCtrl', function($scope) {})
+.controller('SurveyCtrl', function ($scope, $ionicModal) {
+    $scope.showSurvey = showSurvey;
 
+    function showSurvey() {
+        $ionicModal.fromTemplateUrl('templates/survey/tab-survey1.html', {
+            scope: $scope,
+            animation: 'slide-in-up',
+            hideDelay: 920
+        }).then(function (modal) {
+            $scope.modalSettings = modal;
+            $scope.modalSettings.show();
+            $scope.hideSettings = function () {
+                $scope.modalSettings.hide();
+            }
+        });
+    };
+})
 .controller('QuestionCtrl', function($scope, TDCardDelegate, $timeout, QuestionService) {
 
 QuestionService.getAll().then(function(result){
