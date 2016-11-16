@@ -8,15 +8,13 @@ angular.module('starter.controllers', [])
 		SurveyFactory.getSurveys()
 		.then(function (response) {
 			$scope.surveys = response.data;
-			console.log($scope.surveys);
 			console.log ('Questionnaires récupérées');
 		}, function (error) {
 			console.log ('Erreur lors de la récupération des questionnaires : ' + error.message);
 		});
 	};
 
-	$scope.data ={	url_id: 1010,	url_id2: 1011 };
-	console.log($scope.data);
+	$scope.getSurveys();
 })
 
 .controller('QuestionCtrl', function($scope, $stateParams, TDCardDelegate, $timeout, QuestionFactory) {
@@ -84,7 +82,6 @@ angular.module('starter.controllers', [])
 	});
 
 	$scope.cardSwipedLeft = function(index) {
-		console.log('LEFT SWIPE');
 		var card = $scope.cards.active[index];
 		var question = card.object
 		question.counter2++;
@@ -93,7 +90,6 @@ angular.module('starter.controllers', [])
 	};
 
 	$scope.cardSwipedRight = function(index) {
-		console.log('RIGHT SWIPE');
 		var card = $scope.cards.active[index];
 		var question = card.object
 		question.counter1++;
