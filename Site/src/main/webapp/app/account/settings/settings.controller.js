@@ -34,6 +34,7 @@
         Principal.identity().then(function(account) {
             vm.settingsAccount = copyAccount(account);
             vm.score = account.score;
+            vm.entreprise = account.entreprise;
         });
 
         function save () {
