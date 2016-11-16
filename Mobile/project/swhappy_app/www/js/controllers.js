@@ -4,7 +4,7 @@ angular.module('starter.controllers', [])
     $scope.showSurvey = showSurvey;
 
     function showSurvey() {
-        $ionicModal.fromTemplateUrl('templates/survey/tab-survey1.html', {
+        $ionicModal.fromTemplateUrl('templates/tab-question.html', {
             scope: $scope,
             animation: 'slide-in-up',
             hideDelay: 920
