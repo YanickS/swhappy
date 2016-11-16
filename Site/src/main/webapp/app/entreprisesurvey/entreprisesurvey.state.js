@@ -27,6 +27,7 @@
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('entreprisesurvey');
                     $translatePartialLoader.addPart('survey');
+                    $translatePartialLoader.addPart('question');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
@@ -60,6 +61,61 @@
                     $state.go('entreprisesurvey', null, { reload: 'entreprisesurvey' });
                 }, function() {
                     $state.go('entreprisesurvey');
+                });
+            }]
+        })
+        .state('entreprisesurvey.newQuestion', {
+            parent: 'entreprisesurvey',
+            url: '/newQuestion/{id}',
+            data: {
+                authorities: ['ROLE_ENTREPRISE']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entreprisesurvey/entreprisesurveyQuestion-dialog.html',
+                    controller: 'EntrepriseSurveyQuestionDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                title: null,
+                                type: null,
+                                points: null,
+                                promo: null,
+                                id: null
+                            };
+                        }
+                    }
+                }).result.then(function() {
+                    $state.go('entreprisesurvey', null, { reload: 'entreprisesurvey' });
+                }, function() {
+                    $state.go('entreprisesurvey');
+                });
+            }]
+        })
+        .state('entreprisesurvey.deleteQuestion', {
+            parent: 'entreprisesurvey',
+            url: '/deleteQuestion/{id}',
+            data: {
+                authorities: ['ROLE_ENTREPRISE']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/question/question-delete-dialog.html',
+                    controller: 'QuestionDeleteController',
+                    controllerAs: 'vm',
+                    size: 'md',
+                    resolve: {
+                        entity: ['Question', function(Question) {
+                            return Question.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('entreprisesurvey', null, { reload: 'entreprisesurvey' });
+                }, function() {
+                    $state.go('^');
                 });
             }]
         })

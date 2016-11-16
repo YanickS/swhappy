@@ -4,7 +4,8 @@
             "home": {
                 "title": "Gestion de vos questionnaires",
                 "createLabel": "Ajouter un questionnaire",
-                "createQuestionLabel": "Ajouter une question"
+                "createQuestionLabel": "Ajouter une question",
+                "questionList": "Liste des questions"
             },
             "create": {
             	"label": "Création du questionnaire",
@@ -12,6 +13,12 @@
             	"points": "Points",
             	"type": "Type",
             	"promo": "Code Promo"
+            },
+            "createQuestion": {
+            	"title": "Création d'une question",
+            	"label": "Question",
+            	"answer1": "Réponse 1",
+            	"answer2": "Réponse 2"
             }
         }
     }
