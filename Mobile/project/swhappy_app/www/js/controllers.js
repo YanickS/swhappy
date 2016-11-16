@@ -1,5 +1,6 @@
 angular.module('starter.controllers', [])
 
+<<<<<<< HEAD
 .controller('SurveyCtrl', function ($scope,SurveyFactory, $ionicModal) {
 	$scope.showSurvey = showSurvey;
 
@@ -31,6 +32,15 @@ angular.module('starter.controllers', [])
 	};
 })
 .controller('QuestionCtrl', function($scope, TDCardDelegate, $timeout, QuestionFactory,SurveyFactory) {
+=======
+.controller('SurveyCtrl', function ($scope, $stateParams) {
+
+$scope.data ={	url_id: 1010,	url_id2: 1011 };
+console.log($scope.data);
+})
+
+.controller('QuestionCtrl', function($scope, $stateParams, TDCardDelegate, $timeout, QuestionFactory) {
+>>>>>>> 90f915a1d59d1b4e9c144cbc1700cd96febdab07
 
 	var cardTypes;
 
@@ -38,23 +48,33 @@ angular.module('starter.controllers', [])
 		QuestionFactory.getQuestionsOfSurvey(id)
 		.then(function (response) {
 			$scope.questions = response.data;
+			console.log ('Questions du questionnaire "' + $scope.questions[0].surveys.title + '" récupérées');
 			initCard();
-			console.log($scope.cards.active);
 		}, function (error) {
-			console.log ('Error retrieving questions ! ' + error.message);
+			console.log ('Erreur lors de la récupération des questions : ' + error.message);
 		});
 	};
 
-	$scope.getQuestions(1010);
+	$scope.updateQuestion = function (question) {
+		QuestionFactory.updateQuestion(question)
+		.then(function (response) {
+			console.log ('Compteur de question mis à jour');
+		}, function (error) {
+			console.log ('Erreur lors de la mise à jour de la question : ' + error.message);
+		});
+	};
+
+	$scope.getQuestions($stateParams.id);
 
 	function initCard() {
 		var cardTypes = [];
 		for (var i = 0; i < $scope.questions.length; i++)
-		 {
+		{
 			cardTypes.push(
-				{ question: $scope.questions[i].label,
-				response_left: $scope.questions[i].answer1,
-				response_right: $scope.questions[i].answer2})
+				{ 	object: $scope.questions[i],
+					question: $scope.questions[i].label,
+					response_left: $scope.questions[i].answer1,
+					response_right: $scope.questions[i].answer2})
 		}
 
 		$scope.cards = {
@@ -75,31 +95,32 @@ angular.module('starter.controllers', [])
 		$scope.cards.active.push(angular.extend({}, newCard));
 	};
 
-	$scope.refreshCards = function() {
-    // Set $scope.cards to null so that directive reloads
-    $scope.cards.active = null;
-    $timeout(function() {
-    	$scope.cards.active = Array.prototype.slice.call($scope.cards.master, 0);
-    });
-}
+	$scope.end = function() {
+		console.log('end');
+	}
 
-$scope.$on('removeCard', function(event, element, card) {
-	var discarded = $scope.cards.master.splice($scope.cards.master.indexOf(card), 1);
-	$scope.cards.discards.push(discarded);
-});
+	$scope.$on('removeCard', function(event, element, card) {
+		var discarded = $scope.cards.master.splice($scope.cards.master.indexOf(card), 1);
+		$scope.cards.discards.push(discarded);
+	});
 
-$scope.cardSwipedLeft = function(index) {
-	console.log('LEFT SWIPE');
-	var card = $scope.cards.active[index];
-	$scope.cards.disliked.push(card);
-};
+	$scope.cardSwipedLeft = function(index) {
+		console.log('LEFT SWIPE');
+		var card = $scope.cards.active[index];
+		var question = card.object
+		question.counter2++;
+		$scope.updateQuestion(question);
+		$scope.cards.disliked.push(card);
+	};
 
-$scope.cardSwipedRight = function(index) {
-	console.log('RIGHT SWIPE');
-	var card = $scope.cards.active[index];
-	$scope.cards.liked.push(card);
-};
-
+	$scope.cardSwipedRight = function(index) {
+		console.log('RIGHT SWIPE');
+		var card = $scope.cards.active[index];
+		var question = card.object
+		question.counter1++;
+		$scope.updateQuestion(question);
+		$scope.cards.liked.push(card);
+	};
 })
 
 .controller('CardCtrl', function($scope, TDCardDelegate) {

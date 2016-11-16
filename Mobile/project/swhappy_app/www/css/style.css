@@ -9,6 +9,14 @@
   text-align: center;
 }
 
+.end-quest {
+  position: absolute;
+  top: 50px;
+  font-size: 20px;
+  width: 100%;
+  text-align: center;
+}
+
 .td-title span {
   font-weight: bold;
 }
@@ -67,7 +75,7 @@ td-card#end-card {
   border-radius: none;
 }
 
-#end-card i {
+#end-card a {
   position: absolute;
   top: calc(50% - 55px);
   left: calc(50% - 40px);
