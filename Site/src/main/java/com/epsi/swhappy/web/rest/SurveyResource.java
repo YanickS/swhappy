@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import com.epsi.swhappy.domain.Survey;
 
 import com.epsi.swhappy.repository.SurveyRepository;
+import com.epsi.swhappy.repository.UserRepository;
 import com.epsi.swhappy.web.rest.util.HeaderUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,6 +31,9 @@ public class SurveyResource {
         
     @Inject
     private SurveyRepository surveyRepository;
+    
+    @Inject
+    private UserRepository userRepository;
 
     /**
      * POST  /surveys : Create a new survey.
@@ -58,11 +62,17 @@ public class SurveyResource {
      * @return 
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
-    @PostMapping("/surveyComplete/{idSurvey}/{idUser}")
+    @PostMapping("/surveyComplete/{idSurvey}/{idUser}/{score}")
     @Timed
-    public void completeSurvey(@PathVariable long idSurvey, @PathVariable long idUser) throws URISyntaxException {
+    public void completeSurvey(@PathVariable long idSurvey, @PathVariable long idUser, @PathVariable int score) throws URISyntaxException {
         log.debug("REST request complete");
-        surveyRepository.completeSurveyByUder(idSurvey, idUser);
+        try{
+        	 surveyRepository.completeSurveyByUder(idSurvey, idUser);
+        	 userRepository.upScore(score, idUser);
+        } catch (Exception e){
+        	log.debug("error");
+        }
+       
     }
 
     /**
