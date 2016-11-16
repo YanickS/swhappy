@@ -11,5 +11,10 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public interface SurveyRepository extends JpaRepository<Survey,Long> {
+	
+	@Query(value = "SELECT * "
+			+ "FROM survey as survey "
+			+ "WHERE survey.entreprise_id = ?1 ", nativeQuery = true)
+	List<Survey> findAllByEntrepriseId(Long id);
 
 }

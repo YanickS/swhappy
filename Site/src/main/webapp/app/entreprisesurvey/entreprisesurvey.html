@@ -1,16 +1,44 @@
-<div>
-    <h2 data-translate="swhappyApp.entreprisesurvey.home.title">Questions</h2>
+<div class="row">
+    
+    <h2 style="padding-left:25px;" data-translate="swhappyApp.entreprisesurvey.home.title"></h2>
     <jhi-alert></jhi-alert>
-    <div class="container-fluid">
+	
+	<br/>
+	
+	<div style="padding-left:50px;" container-fluid">
         <div class="row">
             <div class="col-xs-4 no-padding-left">
-                <button class="btn btn-primary" ui-sref="question.new" >
+                <button class="btn btn-primary" ui-sref="entreprisesurvey.new({id: vm.entreprise.id})" >
                     <span class="glyphicon glyphicon-plus"></span>
                     <span  data-translate="swhappyApp.entreprisesurvey.home.createLabel">
-                        Create new Question
+                        Create new Survey
                     </span>
                 </button>
             </div>
         </div>
     </div>
+    
+    <br/><br/>
+    
+    <!-- ListView -->
+	<div class="container-fluid" ng-class="{true:'col-md-12', false:'col-md-5'}[vm.page.fullScreen]">
+	
+		<div ng-repeat="survey in vm.lstSurvey | orderBy: 'title'" class="list-group">
+  			<div class="list-group-item">
+    			<div class="row-action-primary">
+      				<i style="background-color:#009688;" class="material-icons">receipt</i>
+   				 </div>
+    			<div class="row-content">
+      				<div class="action-secondary">
+      					<i style="color:#009688;" "ng-click="vm.displaySurvey(survey)" class="material-icons">info</i>
+      				</div>
+      				<h6 class="list-group-item-heading">{{survey.title}}</h6>
+					<p class="list-group-item-text">Type : {{survey.type}} <br/> Score : {{survey.points}}</p>
+    			</div>
+  			</div>
+  			<div class="list-group-separator"></div>
+  		</div>
+ 
+	</div>
+    
 </div>
