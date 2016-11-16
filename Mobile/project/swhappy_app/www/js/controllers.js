@@ -1,13 +1,7 @@
 angular.module('starter.controllers', [])
 
-<<<<<<< HEAD
-.controller('SurveyCtrl', function ($scope,SurveyFactory, $ionicModal) {
-	$scope.showSurvey = showSurvey;
 
-	$scope.date = new Date();
-
-
-
+.controller('SurveyCtrl', function ($scope,SurveyFactory, $stateParams) {
 
 	$scope.getSurveys = (function (response) {
 			$scope.surveys = response.data;
@@ -17,30 +11,15 @@ angular.module('starter.controllers', [])
 		});
 
 
-	function showSurvey() {
-		$ionicModal.fromTemplateUrl('templates/tab-question.html', {
-			scope: $scope,
-			animation: 'slide-in-up',
-			hideDelay: 920
-		}).then(function (modal) {
-			$scope.modalSettings = modal;
-			$scope.modalSettings.show();
-			$scope.hideSettings = function () {
-				$scope.modalSettings.hide();
-			}
-		});
-	};
-})
-.controller('QuestionCtrl', function($scope, TDCardDelegate, $timeout, QuestionFactory,SurveyFactory) {
-=======
-.controller('SurveyCtrl', function ($scope, $stateParams) {
+		$scope.data ={	url_id: 1010,	url_id2: 1011 };
+		console.log($scope.data);
+		})
 
-$scope.data ={	url_id: 1010,	url_id2: 1011 };
-console.log($scope.data);
+
 })
+
 
 .controller('QuestionCtrl', function($scope, $stateParams, TDCardDelegate, $timeout, QuestionFactory) {
->>>>>>> 90f915a1d59d1b4e9c144cbc1700cd96febdab07
 
 	var cardTypes;
 
