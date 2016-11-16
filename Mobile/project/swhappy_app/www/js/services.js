@@ -18,7 +18,7 @@ angular.module('starter.services', [])
     };
 
     QuestionFactory.updateQuestion = function (question) {
-        return $http.put(urlBase + '/' + question.ID, question)
+        return $http.put(urlBase, question)
     };
 
     QuestionFactory.deleteQuestion = function (id) {
@@ -26,7 +26,7 @@ angular.module('starter.services', [])
     };
 
     QuestionFactory.getQuestionsOfSurvey = function (id) {
-        return $http.get(urlBase + '/survey' + '/' + id );
+        return $http.get(urlBase + '/survey/' + id );
     };
 
     return QuestionFactory;
