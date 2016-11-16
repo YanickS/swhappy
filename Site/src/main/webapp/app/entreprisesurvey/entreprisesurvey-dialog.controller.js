@@ -5,17 +5,13 @@
         .module('swhappyApp')
         .controller('EntrepriseSurveyDialogController', EntrepriseSurveyDialogController);
 
-    EntrepriseSurveyDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'entity', 'Survey', 'Question', 'Entreprise'];
+    EntrepriseSurveyDialogController.$inject = ['$timeout', '$scope', '$stateParams', '$uibModalInstance', 'Survey', 'Entreprise'];
 
-    function EntrepriseSurveyDialogController ($timeout, $scope, $stateParams, $uibModalInstance, Survey) {
+    function EntrepriseSurveyDialogController ($timeout, $scope, $stateParams, $uibModalInstance, Survey, Entreprise) {
         var vm = this;
 
         vm.clear = clear;
         vm.save = save;
-
-        $timeout(function (){
-            angular.element('.form-group:eq(1)>input').focus();
-        });
 
         function clear () {
             $uibModalInstance.dismiss('cancel');
@@ -23,7 +19,10 @@
 
         function save () {
             vm.isSaving = true;
-            Survey.save(vm.survey, onSaveSuccess, onSaveError);
+            Entreprise.get({id:$stateParams.id}, function success(result){
+        		vm.survey.entreprise = result;
+                Survey.save(vm.survey, onSaveSuccess, onSaveError);
+        	});
         }
 
         function onSaveSuccess (result) {

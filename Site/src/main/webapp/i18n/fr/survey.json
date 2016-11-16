@@ -7,11 +7,11 @@
                 "createOrEditLabel": "Créer/Editer un Questionnaire",
                 "search": "Rechercher un questionnaire"
             },
-            "created": "Un nouveau Questionnaire a été créé avec l'identifiant {{ param }}",
-            "updated": "Le Questionnaire avec l'identifiant {{ param }} a été mis à jour",
-            "deleted": "Le Questionnaire avec l'identifiant {{ param }} a été supprimé",
+            "created": "Un nouveau Questionnaire a été créé",
+            "updated": "Le Questionnaire a été mis à jour",
+            "deleted": "Le Questionnaire a été supprimé",
             "delete": {
-                "question": "Etes-vous certain de vouloir supprimer le Questionnaire {{ id }} ?"
+                "question": "Etes-vous certain de vouloir supprimer le Questionnaire : '{{ id }}' ?"
             },
             "detail": {
                 "title": "Questionnaire"

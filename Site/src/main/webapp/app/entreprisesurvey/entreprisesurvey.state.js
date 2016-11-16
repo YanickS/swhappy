@@ -26,6 +26,7 @@
             resolve: {
                 translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
                     $translatePartialLoader.addPart('entreprisesurvey');
+                    $translatePartialLoader.addPart('survey');
                     $translatePartialLoader.addPart('global');
                     return $translate.refresh();
                 }]
@@ -62,6 +63,30 @@
                 });
             }]
         })
+        .state('entreprisesurvey.delete', {
+            parent: 'entreprisesurvey',
+            url: '/delete/{id}',
+            data: {
+                authorities: ['ROLE_ENTREPRISE']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entities/survey/survey-delete-dialog.html',
+                    controller: 'SurveyDeleteController',
+                    controllerAs: 'vm',
+                    size: 'md',
+                    resolve: {
+                        entity: ['Survey', function(Survey) {
+                            return Survey.get({id : $stateParams.id}).$promise;
+                        }]
+                    }
+                }).result.then(function() {
+                    $state.go('entreprisesurvey', null, { reload: 'entreprisesurvey' });
+                }, function() {
+                    $state.go('^');
+                });
+            }]
+        });
     }
 
 })();
