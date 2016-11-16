@@ -50,10 +50,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
-  .state('tab.question', {
+  .state('tab.survey-questions', {
     url: '/survey/:id',
     views: {
-      'tab-question': {
+      'tab-survey': {
         templateUrl: 'templates/tab-question.html',
         controller: 'QuestionCtrl'
       }
