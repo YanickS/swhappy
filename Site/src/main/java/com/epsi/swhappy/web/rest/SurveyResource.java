@@ -116,6 +116,20 @@ public class SurveyResource {
         List<Survey> lstSurvey = surveyRepository.findAllByEntrepriseId(id);
         return lstSurvey;
     }
+    
+    /**
+     * GET  /surveys/:id : get the "id" survey.
+     *
+     * @param id the id of the survey to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the survey, or with status 404 (Not Found)
+     */
+    @GetMapping("/surveys/user/{id}")
+    @Timed
+    public List<Survey> getSurveyByUserId(@PathVariable Long id) {
+        log.debug("REST request to get Survey : {}", id);
+        List<Survey> lstSurvey = surveyRepository.findAllByUserId(id);
+        return lstSurvey;
+    }
 
     /**
      * DELETE  /surveys/:id : delete the "id" survey.

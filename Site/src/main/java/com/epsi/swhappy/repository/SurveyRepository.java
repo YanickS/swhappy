@@ -17,4 +17,13 @@ public interface SurveyRepository extends JpaRepository<Survey,Long> {
 			+ "WHERE survey.entreprise_id = ?1 ", nativeQuery = true)
 	List<Survey> findAllByEntrepriseId(Long id);
 
+	@Query(value = "Select * "
+			+ "From survey "
+			+ "Where id NOT IN ( "
+				+ "Select us.survey_id "
+				+ "From user_survey as us "
+				+ "Where user_id = ?1 "
+			+")", nativeQuery = true)
+	List<Survey> findAllByUserId(Long id);
+
 }
