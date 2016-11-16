@@ -39,8 +39,7 @@ angular.module('starter.controllers', [])
 		for (var i = 0; i < $scope.questions.length; i++)
 		 {
 			cardTypes.push(
-				{ image: 'https://static1.squarespace.com/static/556c715ce4b09e217791b6fb/t/561a86eae4b0b66177b71b3d/1444579059279/?format=750w',
-				question: $scope.questions[i].label,
+				{ question: $scope.questions[i].label,
 				response_left: $scope.questions[i].answer1,
 				response_right: $scope.questions[i].answer2})
 		}
