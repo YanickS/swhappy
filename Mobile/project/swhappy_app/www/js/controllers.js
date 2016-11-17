@@ -116,7 +116,7 @@ angular.module('starter.controllers', [])
 
 	$scope.accountPage = {
 		login: "login",
-		mdp: "mdp"
+		mdp: "password"
 	};
 
 	$scope.user = {
