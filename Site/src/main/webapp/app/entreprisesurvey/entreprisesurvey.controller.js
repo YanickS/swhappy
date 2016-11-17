@@ -19,10 +19,10 @@
         vm.page = {};
         vm.chart = {};
         
-        if($stateParams.idSurvey){
-        	Survey.get({id: $stateParams.idSurvey}, function success(result){
+        if($stateParams.idActivSurvey){
+        	Survey.get({id: $stateParams.idActivSurvey}, function success(result){
         		displaySurvey(result);
-        		$stateParams.idSurvey = null;
+        		$stateParams.idActivSurvey = null;
         	});
         }
         

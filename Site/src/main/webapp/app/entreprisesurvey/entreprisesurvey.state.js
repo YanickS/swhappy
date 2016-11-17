@@ -13,7 +13,7 @@
             parent: 'app',
             url: '/surveyManagement',
             params: {
-            	idSurvey: null,
+            	idActivSurvey: null,
             },
             data: {
                 authorities: ['ROLE_ENTREPRISE'],
@@ -132,7 +132,7 @@
                         }
                     }
                 }).result.then(function() {
-                    $state.go('entreprisesurvey', null, { reload: 'entreprisesurvey', idSurvey: $state.params.idSurvey});
+                    $state.go('entreprisesurvey', { idActivSurvey: $state.params.idSurvey}, { reload: 'entreprisesurvey' });
                 }, function() {
                     $state.go('entreprisesurvey');
                 });
@@ -166,7 +166,7 @@
                         }
                     }
                 }).result.then(function() {
-                    $state.go('entreprisesurvey', null, { reload: 'entreprisesurvey', idSurvey: $state.params.idSurvey });
+                    $state.go('entreprisesurvey', { idActivSurvey: $state.params.idSurvey}, { reload: 'entreprisesurvey' });
                 }, function() {
                     $state.go('entreprisesurvey');
                 });
@@ -193,7 +193,7 @@
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('entreprisesurvey', null, { reload: 'entreprisesurvey', idSurvey: $state.params.idSurvey});
+                    $state.go('entreprisesurvey', { idActivSurvey: $state.params.idSurvey}, { reload: 'entreprisesurvey' });
                 }, function() {
                     $state.go('^');
                 });
