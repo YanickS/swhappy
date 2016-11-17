@@ -32,6 +32,42 @@ angular.module('starter.services', [])
     return QuestionFactory;
 }])
 
+.factory('Auth', ['$q', '$http', function($q, $http){
+
+    Auth = {};
+
+    Auth.getToken = function(credentials, callback) {
+        var cb = callback || angular.noop;
+        var deferred = $q.defer();
+
+        var data = {
+            username: credentials.username,
+            password: credentials.password,
+            rememberMe: credentials.rememberMe
+        };
+
+        return $http.post('https://swhappy.herokuapp.com/api/authenticate', data).success(authenticateSuccess).catch(errorAuthenticate);
+        function authenticateSuccess (data, status) {
+            return data.id_token;
+        }
+        function errorAuthenticate(data, status){
+            return "Impossible de se connecter";
+        }
+    }
+
+    Auth.getUserWithToken = function(token){
+        var config = {
+            headers:  {
+                'Authorization': 'Bearer ' + token,
+                'Accept': 'application/json'
+            }
+        };
+        return $http.get("https://swhappy.herokuapp.com/api/account", config);
+    }
+
+    return Auth;
+}])
+
 .factory('SurveyFactory', ['$http', function($http) {
 
     var urlBase = 'https://swhappy.herokuapp.com/api/surveys';

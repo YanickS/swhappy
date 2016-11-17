@@ -1,9 +1,13 @@
 <ion-view view-title="Account">
   <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list>
+  	<div ng-if="!user.connect">
+  		login<input type="texte" ng-model="accountPage.login"/><br/>
+    	Mdp<input type="texte" ng-model="accountPage.mdp"/><br/>    
+    	<button ng-click="connexion()">Connecter</button>
+  	</div>
+    <div ng-if="user.connect">
+    	Bonjour {{user.identity.login}}
+    	<button ng-click="deconnexion()">Déconnecter</button>
+    </div>
   </ion-content>
 </ion-view>

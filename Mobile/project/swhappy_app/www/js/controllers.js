@@ -112,8 +112,41 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('AccountCtrl', function($scope) {
-	$scope.settings = {
-		enableFriends: true
+.controller('AccountCtrl', function($scope, Auth) {
+
+	$scope.accountPage = {
+		login: "login",
+		mdp: "mdp"
 	};
+
+	$scope.user = {
+		identity: {},
+		connect: false
+	}
+
+	$scope.connexion = function(){
+		Auth.getToken({
+			username: $scope.accountPage.login,
+          	password: $scope.accountPage.mdp,
+            rememberMe: false 
+        }).then(function (result) {
+        	if(!result.data){
+        		alert(result);
+        	} else {
+        		var token = result.data.id_token
+	        	Auth.getUserWithToken(token).then(function (result){
+					$scope.user.identity = result.data;
+					$scope.user.connect = true;
+	        	});
+        	}
+        });
+	};
+
+	$scope.deconnexion = function(){
+		$scope.user = {
+			identity: {},
+			connect: false
+		};
+	}
+
 });
