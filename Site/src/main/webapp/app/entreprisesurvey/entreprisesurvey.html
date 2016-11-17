@@ -17,6 +17,7 @@
    				 </div>
     			<div class="row-content">
       				<div class="action-secondary">
+      					<i style="color:#009688;"class="material-icons">create</i>
       					<i style="color:#f44336;" ui-sref="entreprisesurvey.delete({id:survey.id})" class="material-icons">delete</i>
       				</div>
       				<h6 class="list-group-item-heading">{{survey.title}}</h6>
@@ -40,6 +41,7 @@
 	
 		<div style="text-align:center;">
 			<i ng-click="vm.close()" style="color:grey; float:right; padding-top:10px;" class="material-icons">clear</i>
+			<i style="color:#009688;float:left;padding-top:10px;"class="material-icons" ng-click="vm.generateReport()">print</i>
 			<h3 style="margin-top: 0;padding-top:10px;">{{vm.page.currentSurvey.title}}</h3>
 	    	<span style="font-weight: bold;" data-translate="swhappyApp.entreprisesurvey.create.type">Type</span> :
 	    	<span>{{vm.page.currentSurvey.type}}</span> - 
@@ -63,6 +65,7 @@
    				 </div>
     			<div style="min-height:0px;" class="row-content">
       				<div class="action-secondary">
+      					<i style="color:#009688;"class="material-icons" disabled>create</i>
       					<i style="color:#f44336;"class="material-icons" ui-sref="entreprisesurvey.deleteQuestion({id:question.id})">delete</i>
       				</div>
       				<h6 style="font-size:15px;" class="list-group-item-heading">{{question.label}}</h6>

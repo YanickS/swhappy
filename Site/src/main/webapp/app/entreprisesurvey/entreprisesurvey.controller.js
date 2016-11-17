@@ -12,26 +12,36 @@
         vm.displaySurvey = displaySurvey;
         vm.displayGraph = displayGraph;
         vm.close = close;
+        vm.generateReport = generateReport;
         
         vm.lstSurvey = null;
         vm.entreprise = null;
-        vm.page = {
-        	fullScreen: true,
-        	currentSurvey: null,
-        	currentQuestionLst: null
-        };
-        
-        vm.chart = {
-            questionId: null,
-           	labels: [],
-           	data: [],
-           	all: null
-       };
+        vm.page = {};
+        vm.chart = {};
         
         
         loadAll();
         
+        function initChart(){
+        	vm.chart = {
+            	questionId: null,
+               	labels: [],
+               	data: [],
+       	       	all: null
+       		};
+        }
+        
+        function initPage(){
+        	vm.page = {
+                fullScreen: true,
+               	currentSurvey: null,
+               	currentQuestionLst: null
+        	};
+        }
+        
         function loadAll(){
+        	initPage();
+        	initChart();
         	Principal.identity().then(function(account) {
         		vm.entreprise = account.entreprise;
         		SurveyByEntreprise.get({id: vm.entreprise.id}, function success(result){
@@ -40,27 +50,17 @@
         	});
     	}
         
+        function generateReport(){
+        	alert("fonctionnalité à venir");
+        }
+        
         function close(){
-        	vm.page = {
-        		fullScreen: true,
-                currentSurvey: null,
-                currentQuestionLst: null
-        	};
-        	vm.chart = {
-        		questionId: null,
-        	   	labels: [],
-              	data: [],
-      	       	all: null
-       		};
+        	initPage();
+        	initChart();
         }
         
         function displaySurvey(survey){
-        	vm.chart = {
-            	questionId: null,
-               	labels: [],
-               	data: [],
-       	       	all: null
-       		};
+        	initChart();
         	QuestionBySurvey.get({id:survey.id}, function success(result){
         		vm.page.fullScreen = false;
             	vm.page.currentSurvey = survey;
@@ -70,12 +70,7 @@
         
         function displayGraph(question){
         	if(question.id == vm.chart.questionId){
-        		vm.chart = {
-        			questionId: null,
-        	       	labels: [],
-        	       	data: [],
-        	       	all: null
-        		};
+        		initChart();
         	} else {
         		vm.chart.labels = [];
             	vm.chart.labels.push(question.answer1);
