@@ -4,7 +4,7 @@
 
         <ion-list class="list-borderless">
 
-            <ion-item  ng-repeat="survey in surveys" class="color-red" style="top: 30px;" href="#/tab/survey/{{ survey.id }}">
+            <ion-item  ng-repeat="survey in surveys" class="color-red" style="top: 30px;" ui-sref="tab.survey-questions({id:survey.id, id_user:user})">
                 {{survey.title}}
             </ion-item>
 

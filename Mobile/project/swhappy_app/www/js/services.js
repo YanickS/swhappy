@@ -65,5 +65,9 @@ angular.module('starter.services', [])
         return $http.get(urlBase + '/user/' + id);
     };
 
+    SurveyFactory.completeSurvey = function (id_survey,id_user) {
+        return $http.post(urlBase + '/' + id_survey + '/completeby/' + id_user);
+    };
+
     return SurveyFactory;
 }]);
