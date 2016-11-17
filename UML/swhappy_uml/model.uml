@@ -12,7 +12,6 @@
   <packageImport xmi:id="_WdzOMKp0EeauGdiYok0Ntw">
     <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/EcorePrimitiveTypes.library.uml#_0"/>
   </packageImport>
-  <packagedElement xmi:type="uml:Class" xmi:id="_2QPhkKpzEeauGdiYok0Ntw" name="User"/>
   <packagedElement xmi:type="uml:Class" xmi:id="_GbqnUKp0EeauGdiYok0Ntw" name="Survey">
     <ownedAttribute xmi:id="_uN37sKp1EeauGdiYok0Ntw" name="title">
       <type xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
@@ -64,16 +63,6 @@
     <ownedEnd xmi:id="_i_zWMqp0EeauGdiYok0Ntw" name="questions" type="_Sa71sKp0EeauGdiYok0Ntw" association="_i_yvIKp0EeauGdiYok0Ntw">
       <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_i_z9QKp0EeauGdiYok0Ntw"/>
       <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_i_z9Qap0EeauGdiYok0Ntw" value="*"/>
-    </ownedEnd>
-  </packagedElement>
-  <packagedElement xmi:type="uml:Association" xmi:id="_qqlJMKp3EeauGdiYok0Ntw" memberEnd="_qqlJMap3EeauGdiYok0Ntw _qqlwQqp3EeauGdiYok0Ntw" navigableOwnedEnd="_qqlJMap3EeauGdiYok0Ntw _qqlwQqp3EeauGdiYok0Ntw">
-    <ownedEnd xmi:id="_qqlJMap3EeauGdiYok0Ntw" name="users" type="_2QPhkKpzEeauGdiYok0Ntw" association="_qqlJMKp3EeauGdiYok0Ntw">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qqlwQKp3EeauGdiYok0Ntw"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qqlwQap3EeauGdiYok0Ntw" value="*"/>
-    </ownedEnd>
-    <ownedEnd xmi:id="_qqlwQqp3EeauGdiYok0Ntw" name="surveys" type="_GbqnUKp0EeauGdiYok0Ntw" association="_qqlJMKp3EeauGdiYok0Ntw">
-      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_qqmXUKp3EeauGdiYok0Ntw"/>
-      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_qqmXUap3EeauGdiYok0Ntw" value="*"/>
     </ownedEnd>
   </packagedElement>
 </uml:Model>

@@ -1,0 +1,27 @@
+{
+    "swhappyApp": {
+        "question" : {
+            "home": {
+                "title": "Questions",
+                "createLabel": "Créer une nouvelle Question",
+                "createOrEditLabel": "Créer/éditer une Question",
+                "search": "Recherche d'une Question"
+            },
+            "created": "Une nouvelle Question a été créée avec l'identifiant {{ param }}",
+            "updated": "La Question avec l'identifiant {{ param }} a été mise à jour",
+            "deleted": "La Question avec l'identifiant {{ param }} a été supprimée",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer la Question : '{{ id }}' ?"
+            },
+            "detail": {
+                "title": "Question"
+            },
+            "label": "Libellé",
+            "answer1": "Réponse 1",
+            "answer2": "Réponse 2",
+            "counter1": "Compteur 1",
+            "counter2": "Compteur 2",
+            "surveys": "Questionnaire"
+        }
+    }
+}

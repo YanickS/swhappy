@@ -144,6 +144,7 @@ public class AccountResourceIntTest {
             null,                   // id
             "joe",                  // login
             "password",             // password
+            20, 0, "M",
             "Joe",                  // firstName
             "Shmoe",                // lastName
             "joe@example.com",      // e-mail
@@ -153,7 +154,8 @@ public class AccountResourceIntTest {
             null,                   // createdBy
             null,                   // createdDate
             null,                   // lastModifiedBy
-            null                    // lastModifiedDate
+            null,                    // lastModifiedDate
+            null, null
         );
 
         restMvc.perform(
@@ -173,6 +175,7 @@ public class AccountResourceIntTest {
             null,                   // id
             "funky-log!n",          // login <-- invalid
             "password",             // password
+            20, 0, "M",
             "Funky",                // firstName
             "One",                  // lastName
             "funky@example.com",    // e-mail
@@ -182,7 +185,8 @@ public class AccountResourceIntTest {
             null,                   // createdBy
             null,                   // createdDate
             null,                   // lastModifiedBy
-            null                    // lastModifiedDate
+            null,                    // lastModifiedDate
+            null, null
         );
 
         restUserMockMvc.perform(
@@ -202,6 +206,7 @@ public class AccountResourceIntTest {
             null,               // id
             "bob",              // login
             "password",         // password
+            20, 0, "M",
             "Bob",              // firstName
             "Green",            // lastName
             "invalid",          // e-mail <-- invalid
@@ -211,7 +216,8 @@ public class AccountResourceIntTest {
             null,               // createdBy
             null,               // createdDate
             null,               // lastModifiedBy
-            null                // lastModifiedDate
+            null,                    // lastModifiedDate
+            null, null
         );
 
         restUserMockMvc.perform(
@@ -231,6 +237,7 @@ public class AccountResourceIntTest {
             null,               // id
             "bob",              // login
             "123",              // password with only 3 digits
+            20, 0, "M",
             "Bob",              // firstName
             "Green",            // lastName
             "bob@example.com",  // e-mail
@@ -240,7 +247,8 @@ public class AccountResourceIntTest {
             null,               // createdBy
             null,               // createdDate
             null,               // lastModifiedBy
-            null                // lastModifiedDate
+            null,                    // lastModifiedDate
+            null, null
         );
 
         restUserMockMvc.perform(
@@ -261,6 +269,7 @@ public class AccountResourceIntTest {
             null,                   // id
             "alice",                // login
             "password",             // password
+            20, 0, "M",
             "Alice",                // firstName
             "Something",            // lastName
             "alice@example.com",    // e-mail
@@ -270,12 +279,13 @@ public class AccountResourceIntTest {
             null,                   // createdBy
             null,                   // createdDate
             null,                   // lastModifiedBy
-            null                    // lastModifiedDate
+            null,                    // lastModifiedDate
+            null, null
         );
 
         // Duplicate login, different e-mail
-        ManagedUserVM duplicatedUser = new ManagedUserVM(validUser.getId(), validUser.getLogin(), validUser.getPassword(), validUser.getLogin(), validUser.getLastName(),
-            "alicejr@example.com", true, validUser.getLangKey(), validUser.getAuthorities(), validUser.getCreatedBy(), validUser.getCreatedDate(), validUser.getLastModifiedBy(), validUser.getLastModifiedDate());
+        ManagedUserVM duplicatedUser = new ManagedUserVM(validUser.getId(), validUser.getLogin(), validUser.getPassword(), validUser.getAge(), validUser.getScore(), validUser.getSexe(), validUser.getLogin(), validUser.getLastName(),
+            "alicejr@example.com", true, validUser.getLangKey(), validUser.getAuthorities(), validUser.getCreatedBy(), validUser.getCreatedDate(), validUser.getLastModifiedBy(), validUser.getLastModifiedDate(), validUser.getSurvey(), validUser.getEntreprise());
 
         // Good user
         restMvc.perform(
@@ -303,6 +313,7 @@ public class AccountResourceIntTest {
             null,                   // id
             "john",                 // login
             "password",             // password
+            20, 0, "M",
             "John",                 // firstName
             "Doe",                  // lastName
             "john@example.com",     // e-mail
@@ -312,12 +323,13 @@ public class AccountResourceIntTest {
             null,                   // createdBy
             null,                   // createdDate
             null,                   // lastModifiedBy
-            null                    // lastModifiedDate
+            null,                    // lastModifiedDate
+            null, null
         );
 
         // Duplicate e-mail, different login
-        ManagedUserVM duplicatedUser = new ManagedUserVM(validUser.getId(), "johnjr", validUser.getPassword(), validUser.getLogin(), validUser.getLastName(),
-            validUser.getEmail(), true, validUser.getLangKey(), validUser.getAuthorities(), validUser.getCreatedBy(), validUser.getCreatedDate(), validUser.getLastModifiedBy(), validUser.getLastModifiedDate());
+        ManagedUserVM duplicatedUser = new ManagedUserVM(validUser.getId(), "johnjr", validUser.getPassword(),  validUser.getAge(), validUser.getScore(), validUser.getSexe(), validUser.getLogin(), validUser.getLastName(),
+            validUser.getEmail(), true, validUser.getLangKey(), validUser.getAuthorities(), validUser.getCreatedBy(), validUser.getCreatedDate(), validUser.getLastModifiedBy(), validUser.getLastModifiedDate(), validUser.getSurvey(), validUser.getEntreprise());
 
         // Good user
         restMvc.perform(
@@ -344,6 +356,7 @@ public class AccountResourceIntTest {
             null,                   // id
             "badguy",               // login
             "password",             // password
+            20, 0, "M",
             "Bad",                  // firstName
             "Guy",                  // lastName
             "badguy@example.com",   // e-mail
@@ -353,7 +366,8 @@ public class AccountResourceIntTest {
             null,                   // createdBy
             null,                   // createdDate
             null,                   // lastModifiedBy
-            null                    // lastModifiedDate
+            null,                    // lastModifiedDate
+            null, null
         );
 
         restMvc.perform(
@@ -378,7 +392,8 @@ public class AccountResourceIntTest {
             "funky@example.com",    // e-mail
             true,                   // activated
             "fr",                   // langKey
-            new HashSet<>(Arrays.asList(AuthoritiesConstants.USER))
+            new HashSet<>(Arrays.asList(AuthoritiesConstants.USER)),
+            0, "M", 20, null, null
         );
 
         restUserMockMvc.perform(

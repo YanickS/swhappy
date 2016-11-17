@@ -1,6 +1,7 @@
 package com.epsi.swhappy.service;
 
 import com.epsi.swhappy.domain.Authority;
+import com.epsi.swhappy.domain.Entreprise;
 import com.epsi.swhappy.domain.User;
 import com.epsi.swhappy.repository.AuthorityRepository;
 import com.epsi.swhappy.repository.UserRepository;
@@ -78,11 +79,12 @@ public class UserService {
             });
     }
 
-    public User createUser(String login, String password, String firstName, String lastName, String email,
-        String langKey) {
+    public User createUser(String login, String password, int age, int score, String sexe, String firstName, String lastName, String email,
+        String langKey, Entreprise entreprise) {
 
         User newUser = new User();
-        Authority authority = authorityRepository.findOne(AuthoritiesConstants.USER);
+        Authority authorityUser = authorityRepository.findOne(AuthoritiesConstants.USER);
+        Authority authorityEnt = authorityRepository.findOne(AuthoritiesConstants.ENTREPRISE);
         Set<Authority> authorities = new HashSet<>();
         String encryptedPassword = passwordEncoder.encode(password);
         newUser.setLogin(login);
@@ -93,10 +95,19 @@ public class UserService {
         newUser.setEmail(email);
         newUser.setLangKey(langKey);
         // new user is not active
-        newUser.setActivated(false);
+        newUser.setActivated(true);
+        newUser.setAge(age);
+        newUser.setSexe(sexe);
+        newUser.setScore(score);
         // new user gets registration key
         newUser.setActivationKey(RandomUtil.generateActivationKey());
-        authorities.add(authority);
+        if(entreprise != null){
+        	authorities.add(authorityUser);
+        	authorities.add(authorityEnt);
+        	newUser.setEntreprise(entreprise);
+        } else {
+        	authorities.add(authorityUser);
+        }
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
         log.debug("Created Information for User: {}", newUser);
@@ -121,6 +132,12 @@ public class UserService {
             );
             user.setAuthorities(authorities);
         }
+        user.setAge(managedUserVM.getAge());
+        user.setScore(managedUserVM.getScore());
+        user.setSexe(managedUserVM.getSexe());
+        if(managedUserVM.getEntreprise() != null){
+        	user.setEntreprise(managedUserVM.getEntreprise());
+        }
         String encryptedPassword = passwordEncoder.encode(RandomUtil.generatePassword());
         user.setPassword(encryptedPassword);
         user.setResetKey(RandomUtil.generateResetKey());
@@ -131,19 +148,20 @@ public class UserService {
         return user;
     }
 
-    public void updateUser(String firstName, String lastName, String email, String langKey) {
+    public void updateUser(String firstName, String lastName, String email, String langKey, int age) {
         userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin()).ifPresent(u -> {
             u.setFirstName(firstName);
             u.setLastName(lastName);
             u.setEmail(email);
             u.setLangKey(langKey);
+            u.setAge(age);
             userRepository.save(u);
             log.debug("Changed Information for User: {}", u);
         });
     }
 
     public void updateUser(Long id, String login, String firstName, String lastName, String email,
-        boolean activated, String langKey, Set<String> authorities) {
+        boolean activated, String langKey, Set<String> authorities, int age, int score, String sexe, Entreprise entreprise) {
 
         Optional.of(userRepository
             .findOne(id))
@@ -155,6 +173,10 @@ public class UserService {
                 u.setActivated(activated);
                 u.setLangKey(langKey);
                 Set<Authority> managedAuthorities = u.getAuthorities();
+                u.setAge(age);
+                u.setScore(score);
+                u.setSexe(sexe);
+                u.setEntreprise(entreprise);
                 managedAuthorities.clear();
                 authorities.stream().forEach(
                     authority -> managedAuthorities.add(authorityRepository.findOne(authority))

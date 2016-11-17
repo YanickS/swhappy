@@ -29,7 +29,8 @@ import static springfox.documentation.builders.PathSelectors.regex;
 @Configuration
 @EnableSwagger2
 @Import(springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration.class)
-@Profile(Constants.SPRING_PROFILE_SWAGGER)
+//@Profile(Constants.SPRING_PROFILE_SWAGGER)
+//@Profile("!" + Constants.SPRING_PROFILE_PRODUCTION)
 public class SwaggerConfiguration {
 
     private final Logger log = LoggerFactory.getLogger(SwaggerConfiguration.class);

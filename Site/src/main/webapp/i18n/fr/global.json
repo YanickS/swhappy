@@ -4,9 +4,13 @@
         "browsehappy": "Vous utilisez un <strong>ancien</strong> navigateur. Veuillez <a href=\"http://browsehappy.com/?locale=fr\">mettre à jour votre navigateur</a> pour une meilleure expérience.",
         "menu": {
             "home": "Accueil",
+            "questionnaire": "Questionnaire",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "Entités",
+                "survey": "Questionnaires",
+                "question": "Questions",
+                "entreprise": "Entreprises",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -41,7 +45,21 @@
             "confirmpassword": "Confirmation du nouveau mot de passe",
             "confirmpassword.placeholder": "Confirmation du nouveau mot de passe",
             "email": "Email",
-            "email.placeholder": "Votre email"
+            "email.placeholder": "Votre email",
+            "sexe": "Sexe",
+            "sexeM": "Homme",
+            "sexeF": "Femme",
+            "age": "Age",
+            "age.placeholder":"Votre age",
+            "nameentreprise": "Entreprise",
+            "nameentreprise.placeholder": "Votre entreprise",
+            "siret": "N°Siret",
+            "siret.placeholder": "N° Siret de votre entreprise",
+            "city": "Localisation (Ville)",
+            "city.placeholder": "Ville d'implantation",
+            "activity": "Rapide description de l'activité de l'entreprise",
+            "score": "Score",
+            "score.placeholder": "Indiquez le score"
         },
         "messages": {
             "info": {
@@ -68,6 +86,24 @@
                     "minlength": "Votre email doit comporter au moins 5 caractères.",
                     "maxlength": "Votre email ne doit pas comporter plus de 50 caractères.",
                     "invalid": "Votre email n'est pas valide."
+                },
+                "age" : {
+                    "required": "Votre age est requis.",
+                    "invalid": "Votre age doit être compris entre 1 et 100"
+                },
+                "score" : {
+                    "required": "Votre score est requis.",
+                    "invalid": "Votre score doit être compris entre 1 et 1000000000"
+                },
+                "nameentreprise" : {
+                    "required": "Votre entreprise est requise."
+                },
+                "siret" : {
+                    "required": "Le numéros de siret est requies",
+                    "length": "Le numéros de siret doit faire 14 caractères."
+                },
+                "city" : {
+                    "required": "L'emplacement de l'entreprise est requis."
                 }
             }
         },

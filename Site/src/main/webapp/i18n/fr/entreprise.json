@@ -1,0 +1,25 @@
+{
+    "swhappyApp": {
+        "entreprise" : {
+            "home": {
+                "title": "Entreprises",
+                "createLabel": "Créer une nouvelle Entreprise",
+                "createOrEditLabel": "Créer/éditer un Entreprise",
+                "search": "Recherche d'une Entreprise"
+            },
+            "created": "Une nouvelle Entreprise a été créée avec l'identifiant {{ param }}",
+            "updated": "L'Entreprise avec l'identifiant {{ param }} a été mise à jour",
+            "deleted": "L'Entreprise avec l'identifiant {{ param }} a été supprimée",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer l'Entreprise {{ id }} ?"
+            },
+            "detail": {
+                "title": "Entreprise"
+            },
+            "siret": "N°Siret",
+            "name": "Nom",
+            "activity": "Description Activité",
+            "city": "Ville"
+        }
+    }
+}

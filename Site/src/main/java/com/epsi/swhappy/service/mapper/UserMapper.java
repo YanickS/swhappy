@@ -1,6 +1,7 @@
 package com.epsi.swhappy.service.mapper;
 
 import com.epsi.swhappy.domain.Authority;
+import com.epsi.swhappy.domain.Survey;
 import com.epsi.swhappy.domain.User;
 import com.epsi.swhappy.service.dto.UserDTO;
 import org.mapstruct.*;

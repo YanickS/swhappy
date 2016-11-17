@@ -1,0 +1,27 @@
+{
+    "swhappyApp": {
+        "survey" : {
+            "home": {
+                "title": "Questionnaire",
+                "createLabel": "Créer un nouveau Questionnaire",
+                "createOrEditLabel": "Créer/Editer un Questionnaire",
+                "search": "Rechercher un questionnaire"
+            },
+            "created": "Un nouveau Questionnaire a été créé",
+            "updated": "Le Questionnaire a été mis à jour",
+            "deleted": "Le Questionnaire a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Questionnaire : '{{ id }}' ?"
+            },
+            "detail": {
+                "title": "Questionnaire"
+            },
+            "title": "Titre",
+            "type": "Type",
+            "points": "Points",
+            "promo": "Code Promo",
+            "entreprise": "Entreprise",
+            "questions": "Questions"
+        }
+    }
+}

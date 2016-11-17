@@ -37,5 +37,25 @@
            timeToLiveSeconds="3600">
     </cache>
     
+    <cache name="com.epsi.swhappy.domain.Survey"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epsi.swhappy.domain.Survey.questions"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epsi.swhappy.domain.Survey.users"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epsi.swhappy.domain.Question"
+        timeToLiveSeconds="3600">
+    </cache>
+
+    <cache name="com.epsi.swhappy.domain.Entreprise"
+        timeToLiveSeconds="3600">
+    </cache>
+
     <!-- jhipster-needle-ehcache-add-entry -->
 </ehcache>

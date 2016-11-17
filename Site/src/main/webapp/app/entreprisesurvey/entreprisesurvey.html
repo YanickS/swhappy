@@ -1,0 +1,95 @@
+<div class="row">
+    
+    <div>
+    	<h2 style="padding-left:25px;" data-translate="swhappyApp.entreprisesurvey.home.title"></h2>
+    </div>
+    
+    <br/>
+    <jhi-alert></jhi-alert>
+    <br/>
+    
+    <!-- ListView -->
+	<div class="container-fluid" ng-class="{true:'col-md-12', false:'col-md-5'}[vm.page.fullScreen]">
+		<div ng-repeat="survey in vm.lstSurvey | orderBy: 'title'" class="list-group">
+  			<div class="list-group-item">
+    			<div class="row-action-primary">
+      				<i ng-click="vm.displaySurvey(survey)" style="background-color:#009688;" class="material-icons">receipt</i>
+   				 </div>
+    			<div class="row-content">
+      				<div class="action-secondary">
+      					<i style="color:#009688;"class="material-icons" ui-sref="entreprisesurvey.edit({idEntreprise: vm.entreprise.id, idSurvey: survey.id})">create</i>
+      					<i style="color:#f44336;" ui-sref="entreprisesurvey.delete({id:survey.id})" class="material-icons">delete</i>
+      				</div>
+      				<h6 class="list-group-item-heading">{{survey.title}}</h6>
+					<p class="list-group-item-text">Type : {{survey.type}} <br/> Score : {{survey.points}}</p>
+    			</div>
+  			</div>
+  			<div class="list-group-separator"></div>
+  		</div>
+  		
+  		<div style="text-align:center;" >
+	  		<button class="btn btn-primary" ui-sref="entreprisesurvey.new({idEntreprise: vm.entreprise.id})" >
+	        	<span class="glyphicon glyphicon-plus"></span>
+	            <span  data-translate="swhappyApp.entreprisesurvey.home.createLabel">Create new Survey</span>
+	     	</button>
+  		</div>
+  		
+	</div>
+	
+	<!-- Survey Detail -->
+	<div style="background-color:rgba(225, 240, 249, 0.45);" class="container-fluid col-md-7" ng-if="!vm.page.fullScreen">
+	
+		<div style="text-align:center;">
+			<i ng-click="vm.close()" style="color:grey; float:right; padding-top:10px;" class="material-icons">clear</i>
+			<i style="color:#009688;float:left;padding-top:10px;"class="material-icons" ng-click="vm.generateReport()">print</i>
+			<h3 style="margin-top: 0;padding-top:10px;">{{vm.page.currentSurvey.title}}</h3>
+	    	<span style="font-weight: bold;" data-translate="swhappyApp.entreprisesurvey.create.type">Type</span> :
+	    	<span>{{vm.page.currentSurvey.type}}</span> - 
+	    	<span style="font-weight: bold;" data-translate="swhappyApp.entreprisesurvey.create.points">Points</span> :
+	   		<span>{{vm.page.currentSurvey.points}}</span> - 
+	   		<span style="font-weight: bold;" data-translate="swhappyApp.entreprisesurvey.create.promo">Code promo</span> :
+	   		<span>{{vm.page.currentSurvey.promo}}</span>
+	   		<br/><br/>
+			<img ng-src="https://www2.deloitte.com/content/dam/Deloitte/uk/Images/header_images/Campaign/finance/deloitte-uk-deloitte-cfo-survey.jpg/_jcr_content/renditions/cq5dam.web.1400.350.desktop.jpeg" 
+				alt="Questionnaire" style="width:100%;height:125px;">
+		</div>
+		
+		<div style="text-align:center;">
+			<h3 data-translate="swhappyApp.entreprisesurvey.home.questionList">Liste des questions</h3>
+		</div>
+		
+		<div style="margin-bottom: 20px;" ng-repeat="question in vm.page.currentQuestionLst | orderBy: 'label'" class="list-group">
+  			<div class="list-group-item">
+    			<div class="row-action-primary">
+      				<i ng-click="vm.displayGraph(question)" style="background-color:#009688;" class="material-icons">equalizer</i>
+   				 </div>
+    			<div style="min-height:0px;" class="row-content">
+      				<div class="action-secondary">
+      					<i style="color:#009688;"class="material-icons" ng-if="question.counter1 == 0 && question.counter2 == 0" ui-sref="entreprisesurvey.editQuestion({idSurvey: vm.page.currentSurvey.id, idQuestion: question.id})">create</i>
+      					<i style="color:#f44336;"class="material-icons" ui-sref="entreprisesurvey.deleteQuestion({id:question.id, idSurvey: vm.page.currentSurvey.id})">delete</i>
+      				</div>
+      				<h6 style="font-size:15px;" class="list-group-item-heading">{{question.label}}</h6>
+      				
+      				<div style="width:50%; height:50%; margin:auto;">
+      					<canvas ng-if="vm.chart.questionId == question.id && vm.chart.all != 0" id="pie" class="chart chart-pie"
+  							chart-data="vm.chart.data" chart-labels="vm.chart.labels" chart-options="options">
+						</canvas>
+						<p ng-if="vm.chart.questionId == question.id && vm.chart.all == 0" data-translate="swhappyApp.entreprisesurvey.home.nodata">Nous n'avons pas encore récolté de données</p>
+      				</div>
+      				
+					
+				</div>
+  			</div>
+  			<div class="list-group-separator"></div>
+  		</div>
+  		
+  		<div style="text-align:center;">
+			<button class="btn btn-primary" ui-sref="entreprisesurvey.newQuestion({idSurvey: vm.page.currentSurvey.id})">
+        		<span class="glyphicon glyphicon-plus"></span>
+            	<span data-translate="swhappyApp.entreprisesurvey.home.createQuestionLabel">Create new Survey</span>
+     		</button>
+		</div>
+  		
+	</div>
+    
+</div>

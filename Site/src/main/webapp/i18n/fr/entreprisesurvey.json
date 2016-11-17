@@ -1,0 +1,26 @@
+{
+    "swhappyApp": {
+        "entreprisesurvey" : {
+            "home": {
+                "title": "Gestion de vos questionnaires",
+                "createLabel": "Ajouter un questionnaire",
+                "createQuestionLabel": "Ajouter une question",
+                "questionList": "Liste des questions",
+                "nodata": "Pas encore de données"
+            },
+            "create": {
+            	"label": "Création du questionnaire",
+            	"title": "Titre",
+            	"points": "Points",
+            	"type": "Type",
+            	"promo": "Code Promo"
+            },
+            "createQuestion": {
+            	"title": "Création d'une question",
+            	"label": "Question",
+            	"answer1": "Réponse 1",
+            	"answer2": "Réponse 2"
+            }
+        }
+    }
+}

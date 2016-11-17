@@ -3,10 +3,16 @@
     <dl class="dl-horizontal">
         <dt><span data-translate="userManagement.login">Login</span></dt>
         <dd><span>{{vm.user.login}}</span></dd>
+        <dt><span data-translate="userManagement.score">Score</span></dt>
+        <dd>{{vm.user.score}}</dd>
         <dt><span data-translate="userManagement.firstName">First Name</span></dt>
         <dd>{{vm.user.firstName}}</dd>
         <dt><span data-translate="userManagement.lastName">Last Name</span></dt>
         <dd>{{vm.user.lastName}}</dd>
+        <dt><span data-translate="userManagement.age">Age</span></dt>
+        <dd>{{vm.user.age}}</dd>
+        <dt><span data-translate="userManagement.sexe">Sexe</span></dt>
+        <dd>{{vm.user.sexe}}</dd>
         <dt><span data-translate="userManagement.email">Email</span></dt>
         <dd>{{vm.user.email}}</dd>
         <dt><span data-translate="userManagement.activated">Activated</span></dt>
@@ -27,10 +33,15 @@
                 <li ng-repeat="authority in vm.user.authorities"><span>{{authority}}</span></li>
             </ul>
         </dd>
+        <dt><span data-translate="userManagement.entreprise">Entreprise</span></dt>
+        <dd>{{vm.user.entreprise.name}}</dd>
     </dl>
-    <button type="submit"
-            ui-sref="user-management"
-            class="btn btn-info">
-        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
-    </button>
+    
+    <div style="text-align:center;">
+	    <button type="submit"
+	            ui-sref="user-management"
+	            class="btn btn-info">
+	        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+	    </button>
+    </div>
 </div>

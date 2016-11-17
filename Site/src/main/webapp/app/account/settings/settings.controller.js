@@ -14,6 +14,7 @@
         vm.save = save;
         vm.settingsAccount = null;
         vm.success = null;
+        vm.score = 0;
 
         /**
          * Store the "settings account" in a separate variable, and not in the shared "account" variable.
@@ -25,12 +26,15 @@
                 firstName: account.firstName,
                 langKey: account.langKey,
                 lastName: account.lastName,
-                login: account.login
+                login: account.login,
+                age: account.age
             };
         };
 
         Principal.identity().then(function(account) {
             vm.settingsAccount = copyAccount(account);
+            vm.score = account.score;
+            vm.entreprise = account.entreprise;
         });
 
         function save () {
