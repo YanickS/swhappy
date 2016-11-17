@@ -1,11 +1,9 @@
 angular.module('starter.controllers', [])
 
-.controller('SurveyCtrl', function ($scope,SurveyFactory, $stateParams) {
+.controller('SurveyCtrl', function ($scope, SurveyFactory, $stateParams) {
 
-
-
-	$scope.getSurveys = function () {
-		SurveyFactory.getSurveys()
+	$scope.getSurveysByUserID = function (id_user) {
+		SurveyFactory.getUserSurveys(id_user)
 		.then(function (response) {
 			$scope.surveys = response.data;
 			console.log ('Questionnaires récupérées');
@@ -14,10 +12,12 @@ angular.module('starter.controllers', [])
 		});
 	};
 
-	$scope.getSurveys();
+	$scope.user = 1003
+	if ($scope.surveys){location.reload();console.log("coucou");}
+	$scope.getSurveysByUserID($scope.user);
 })
 
-.controller('QuestionCtrl', function($scope, $stateParams, TDCardDelegate, $timeout, QuestionFactory) {
+.controller('QuestionCtrl', function($scope, $stateParams, TDCardDelegate, $timeout, QuestionFactory,SurveyFactory) {
 
 	var cardTypes;
 
@@ -38,6 +38,15 @@ angular.module('starter.controllers', [])
 			console.log ('Compteur de question mis à jour');
 		}, function (error) {
 			console.log ('Erreur lors de la mise à jour de la question : ' + error.message);
+		});
+	};
+
+	$scope.completeSurvey = function (id_survey,id_user) {
+		SurveyFactory.completeSurvey(id_survey,id_user)
+		.then(function (response) {
+			console.log ('Questionnaire terminé');
+		}, function (error) {
+			console.log ('Erreur lors de fin du questionnaire : ' + error.message);
 		});
 	};
 
@@ -73,6 +82,7 @@ angular.module('starter.controllers', [])
 	};
 
 	$scope.end = function() {
+		$scope.completeSurvey($stateParams.id,$stateParams.id_user);
 		console.log('end');
 	}
 

@@ -42,6 +42,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
   .state('tab.survey', {
     url: '/survey',
+    cache:false,
     views: {
       'tab-survey': {
         templateUrl: 'templates/tab-survey.html',
@@ -52,6 +53,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
   .state('tab.survey-questions', {
     url: '/survey/:id',
+    params:{id_user:null},
     views: {
       'tab-survey': {
         templateUrl: 'templates/tab-question.html',
