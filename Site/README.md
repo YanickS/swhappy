@@ -89,7 +89,8 @@ For more information refer to [Using Docker and Docker-Compose][], this page als
 
 ## Continuous Integration (optional)
 
-To set up a CI environment, consult the [Setting up Continuous Integration][] page.
+To see Sw’Happy, consult https://swhappy.herokuapp.com/#/ page.
+(This page may take a long time to start if the server is sleeping)
 
 [JHipster Homepage and latest documentation]: https://jhipster.github.io
 [JHipster 3.10.0 archive]: https://jhipster.github.io/documentation-archive/v3.10.0
