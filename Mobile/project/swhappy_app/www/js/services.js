@@ -97,8 +97,8 @@ angular.module('starter.services', [])
         return $http.get(urlBase + '/entreprise/' + id);
     };
 
-    SurveyFactory.getUserSurveys = function (id) {
-        return $http.get(urlBase + '/user/' + id);
+    SurveyFactory.getUserSurveys = function (login) {
+        return $http.get(urlBase + '/user/' + login);
     };
 
     SurveyFactory.completeSurvey = function (id_survey,id_user) {

@@ -1,15 +1,14 @@
-
-    <ion-view name="question" classe="survey" hide-nav-bar="true">
-        <ion-content class="padding">
-            <h2 class="td-title">Choisissez un Questionnaire!</h2>
-            <p class="list-card">
-                <ion-list class="list card">
-                    <ion-item ng-repeat="survey in surveys" class="item item-icon-left" style="top: 30px;" ui-sref="tab.survey-questions({id:survey.id, id_user:user})">
-                        <i class="icon ion-clipboard"></i>{{survey.title}}<br/>
-                        <font style="text-transform:uppercase;">{{survey.entreprise.name}}</font> ({{survey.type}}) <font style="float:right; margin-top:-20px">{{survey.points}}</font>
-                    </ion-item>
-                </ion-list>
-            </p>
-        </ion-content>
-        <img class="image1" ng-src="img/background-2.png" />
-    </ion-view>
+<ion-view name="question" classe="survey" hide-nav-bar="true">
+    <ion-content class="padding">
+        <h2 class="td-title">Choisissez un Questionnaire!</h2>
+        <p class="list-card">
+            <ion-list class="list card">
+            <ion-item ng-repeat="survey in surveys" class="item item-icon-left" style="top: 30px;" ui-sref="tab.survey-questions({id:survey.id})">
+                    <i class="icon ion-clipboard"></i>{{survey.title}}<br/>
+                    <font style="text-transform:uppercase;">{{survey.entreprise.name}}</font> ({{survey.type}}) <font style="float:right; margin-top:-20px">{{survey.points}}</font>
+                </ion-item>
+            </ion-list>
+        </p>
+    </ion-content>
+    <img class="image1" ng-src="img/background-2.png" />
+</ion-view>
