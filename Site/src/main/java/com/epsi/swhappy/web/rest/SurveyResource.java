@@ -3,6 +3,7 @@ package com.epsi.swhappy.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.epsi.swhappy.domain.Question;
 import com.epsi.swhappy.domain.Survey;
+import com.epsi.swhappy.domain.User;
 import com.epsi.swhappy.repository.QuestionRepository;
 import com.epsi.swhappy.repository.SurveyRepository;
 import com.epsi.swhappy.repository.UserRepository;
@@ -66,14 +67,15 @@ public class SurveyResource {
      * @return 
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
-    @PostMapping("/surveys/{idSurvey}/completeby/{idUser}")
+    @PostMapping("/surveys/{idSurvey}/completeby/{login}")
     @Timed
-    public void completeSurvey(@PathVariable long idSurvey, @PathVariable long idUser) throws URISyntaxException {
+    public void completeSurvey(@PathVariable long idSurvey, @PathVariable String login) throws URISyntaxException {
         log.debug("REST request complete");
         try{
-        	 surveyRepository.completeSurveyByUser(idSurvey, idUser);
-        	 Survey survey = surveyRepository.findOne(idSurvey);
-        	 userRepository.upScore(survey.getPoints(), idUser);
+            Optional<User> user = userRepository.findOneByLogin(login);
+            surveyRepository.completeSurveyByUser(idSurvey, user.get().getId());
+            Survey survey = surveyRepository.findOne(idSurvey);
+        	userRepository.upScore(survey.getPoints(), user.get().getId());
         } catch (Exception e){
         	log.debug("error");
         }
@@ -153,11 +155,12 @@ public class SurveyResource {
      * @param id the id of the survey to retrieve
      * @return the ResponseEntity with status 200 (OK) and with body the survey, or with status 404 (Not Found)
      */
-    @GetMapping("/surveys/user/{id}")
+    @GetMapping("/surveys/user/{login}")
     @Timed
-    public List<Survey> getSurveyByUserId(@PathVariable Long id) {
-        log.debug("REST request to get Survey : {}", id);
-        List<Survey> lstSurvey = surveyRepository.findAllByUserId(id);
+    public List<Survey> getSurveyByUserId(@PathVariable String login) {
+        log.debug("REST request to get Survey : {}", login);
+        Optional<User> user = userRepository.findOneByLogin(login);
+        List<Survey> lstSurvey = surveyRepository.findAllByUserId(user.get().getId());
         return lstSurvey;
     }
 
