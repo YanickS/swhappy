@@ -30,11 +30,12 @@ public interface SurveyRepository extends JpaRepository<Survey,Long> {
 	@Query(value = "INSERT INTO user_survey (user_id, survey_id) VALUES (?2, ?1)", nativeQuery = true)
 	@Modifying
 	@Transactional
-	void completeSurveyByUder(long idSurvey, long idUser);
+	void completeSurveyByUser(long idSurvey, long idUser);
 
 	@Query(value = "DELETE FROM user_survey WHERE survey_id=?1", nativeQuery = true)
 	@Modifying
 	@Transactional
 	void deleteForUser(Long id);
+
 
 }

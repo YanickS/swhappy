@@ -66,13 +66,14 @@ public class SurveyResource {
      * @return 
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
-    @PostMapping("/surveyComplete/{idSurvey}/{idUser}/{score}")
+    @PostMapping("/survey/{idSurvey}/completeby/{idUser}")
     @Timed
-    public void completeSurvey(@PathVariable long idSurvey, @PathVariable long idUser, @PathVariable int score) throws URISyntaxException {
+    public void completeSurvey(@PathVariable long idSurvey, @PathVariable long idUser) throws URISyntaxException {
         log.debug("REST request complete");
         try{
-        	 surveyRepository.completeSurveyByUder(idSurvey, idUser);
-        	 userRepository.upScore(score, idUser);
+        	 surveyRepository.completeSurveyByUser(idSurvey, idUser);
+        	 Survey survey = surveyRepository.findOne(idSurvey);
+        	 userRepository.upScore(survey.getPoints(), idUser);
         } catch (Exception e){
         	log.debug("error");
         }
