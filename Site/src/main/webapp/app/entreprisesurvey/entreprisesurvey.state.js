@@ -12,6 +12,9 @@
         .state('entreprisesurvey', {
             parent: 'app',
             url: '/surveyManagement',
+            params: {
+            	idSurvey: null,
+            },
             data: {
                 authorities: ['ROLE_ENTREPRISE'],
                 pageTitle: 'swhappyApp.entreprisesurvey.home.title'
@@ -95,7 +98,7 @@
                         }
                     }
                 }).result.then(function() {
-                    $state.go('entreprisesurvey', null, { reload: 'entreprisesurvey' });
+                    $state.go('entreprisesurvey', null, { reload: 'entreprisesurvey'});
                 }, function() {
                     $state.go('entreprisesurvey');
                 });
@@ -129,7 +132,7 @@
                         }
                     }
                 }).result.then(function() {
-                    $state.go('entreprisesurvey', null, { reload: 'entreprisesurvey' });
+                    $state.go('entreprisesurvey', null, { reload: 'entreprisesurvey', idSurvey: $state.params.idSurvey});
                 }, function() {
                     $state.go('entreprisesurvey');
                 });
@@ -163,7 +166,7 @@
                         }
                     }
                 }).result.then(function() {
-                    $state.go('entreprisesurvey', null, { reload: 'entreprisesurvey' });
+                    $state.go('entreprisesurvey', null, { reload: 'entreprisesurvey', idSurvey: $state.params.idSurvey });
                 }, function() {
                     $state.go('entreprisesurvey');
                 });
@@ -172,6 +175,9 @@
         .state('entreprisesurvey.deleteQuestion', {
             parent: 'entreprisesurvey',
             url: '/deleteQuestion/{id}',
+            params: {
+            	idSurvey: null
+            },
             data: {
                 authorities: ['ROLE_ENTREPRISE']
             },
@@ -187,7 +193,7 @@
                         }]
                     }
                 }).result.then(function() {
-                    $state.go('entreprisesurvey', null, { reload: 'entreprisesurvey' });
+                    $state.go('entreprisesurvey', null, { reload: 'entreprisesurvey', idSurvey: $state.params.idSurvey});
                 }, function() {
                     $state.go('^');
                 });

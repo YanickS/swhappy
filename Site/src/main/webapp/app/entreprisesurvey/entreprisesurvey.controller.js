@@ -5,9 +5,9 @@
         .module('swhappyApp')
         .controller('EntrepriseSurveyController', EntrepriseSurveyController);
 
-    EntrepriseSurveyController.$inject = ['$scope', '$state', 'Question', 'SurveyByEntreprise', 'Principal', 'QuestionBySurvey'];
+    EntrepriseSurveyController.$inject = ['$scope', '$state', '$stateParams', 'Question', 'SurveyByEntreprise', 'Principal', 'QuestionBySurvey', 'Survey'];
 
-    function EntrepriseSurveyController ($scope, $state, Question, SurveyByEntreprise, Principal, QuestionBySurvey) {
+    function EntrepriseSurveyController ($scope, $state, $stateParams, Question, SurveyByEntreprise, Principal, QuestionBySurvey, Survey) {
         var vm = this;
         vm.displaySurvey = displaySurvey;
         vm.displayGraph = displayGraph;
@@ -19,6 +19,12 @@
         vm.page = {};
         vm.chart = {};
         
+        if($stateParams.idSurvey){
+        	Survey.get({id: $stateParams.idSurvey}, function success(result){
+        		displaySurvey(result);
+        		$stateParams.idSurvey = null;
+        	});
+        }
         
         loadAll();
         
