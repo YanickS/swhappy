@@ -66,7 +66,44 @@
         })
         .state('entreprisesurvey.newQuestion', {
             parent: 'entreprisesurvey',
-            url: '/newQuestion/{id}',
+            url: '/newQuestion',
+            params: {
+            	idSurvey: null,
+            },
+            data: {
+                authorities: ['ROLE_ENTREPRISE']
+            },
+            onEnter: ['$stateParams', '$state', '$uibModal', function($stateParams, $state, $uibModal) {
+                $uibModal.open({
+                    templateUrl: 'app/entreprisesurvey/entreprisesurveyQuestion-dialog.html',
+                    controller: 'EntrepriseSurveyQuestionDialogController',
+                    controllerAs: 'vm',
+                    backdrop: 'static',
+                    size: 'lg',
+                    resolve: {
+                        entity: function () {
+                            return {
+                                title: null,
+                                type: null,
+                                points: null,
+                                promo: null,
+                                id: null
+                            };
+                        }
+                    }
+                }).result.then(function() {
+                    $state.go('entreprisesurvey', null, { reload: 'entreprisesurvey' });
+                }, function() {
+                    $state.go('entreprisesurvey');
+                });
+            }]
+        })
+        .state('entreprisesurvey.editQuestion', {
+            parent: 'entreprisesurvey',
+            url: '/editQuestion/{idQuestion}',
+            params: {
+            	idSurvey: null,
+            },
             data: {
                 authorities: ['ROLE_ENTREPRISE']
             },

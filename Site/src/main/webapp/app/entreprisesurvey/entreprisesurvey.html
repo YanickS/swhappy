@@ -65,7 +65,7 @@
    				 </div>
     			<div style="min-height:0px;" class="row-content">
       				<div class="action-secondary">
-      					<i style="color:#009688;"class="material-icons" disabled>create</i>
+      					<i style="color:#009688;"class="material-icons" ng-if="question.counter1 == 0 && question.counter2 == 0" ui-sref="entreprisesurvey.editQuestion({idSurvey: vm.page.currentSurvey.id, idQuestion: question.id})">create</i>
       					<i style="color:#f44336;"class="material-icons" ui-sref="entreprisesurvey.deleteQuestion({id:question.id})">delete</i>
       				</div>
       				<h6 style="font-size:15px;" class="list-group-item-heading">{{question.label}}</h6>
@@ -84,7 +84,7 @@
   		</div>
   		
   		<div style="text-align:center;">
-			<button class="btn btn-primary" ui-sref="entreprisesurvey.newQuestion({id: vm.page.currentSurvey.id})">
+			<button class="btn btn-primary" ui-sref="entreprisesurvey.newQuestion({idSurvey: vm.page.currentSurvey.id})">
         		<span class="glyphicon glyphicon-plus"></span>
             	<span data-translate="swhappyApp.entreprisesurvey.home.createQuestionLabel">Create new Survey</span>
      		</button>

@@ -10,22 +10,31 @@
     function EntrepriseSurveyQuestionDialogController ($timeout, $scope, $stateParams, $uibModalInstance, entity, Question, Survey) {
         var vm = this;
 
-        vm.question = entity;
         vm.clear = clear;
         vm.save = save;
+        vm.question = {};
 
         function clear () {
             $uibModalInstance.dismiss('cancel');
         }
+        
+        if($stateParams.idQuestion){
+        	vm.question = Question.get({id: $stateParams.idQuestion});
+        }
 
         function save () {
             vm.isSaving = true;
-            Survey.get({id:$stateParams.id}, function success(result){
-        		vm.question.surveys = result;
-        		vm.question.counter1 = 0;
-        		vm.question.counter2 = 0;
-                Question.save(vm.question, onSaveSuccess, onSaveError);
-        	});
+            if($stateParams.idQuestion){
+            	Question.update(vm.question, onSaveSuccess, onSaveError);
+            } else {
+            	Survey.get({id:$stateParams.idSurvey}, function success(result){
+            		vm.question.surveys = result;
+            		vm.question.counter1 = 0;
+            		vm.question.counter2 = 0;
+                    Question.save(vm.question, onSaveSuccess, onSaveError);
+            	});
+            }
+            
         }
 
         function onSaveSuccess (result) {
