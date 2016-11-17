@@ -53,7 +53,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
   .state('tab.survey-questions', {
     url: '/survey/:id',
-    params:{id_user:null},
     views: {
       'tab-survey': {
         templateUrl: 'templates/tab-question.html',
@@ -72,21 +71,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
     }
   })
 
-
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/survey');
+  $urlRouterProvider.otherwise('/tab/account');
 
 })
 
-.directive('noScroll', function($document) {
-
-  return {
-    restrict: 'A',
-    link: function($scope, $element, $attr) {
-
-      $document.on('touchmove', function(e) {
-        e.preventDefault();
-      });
-    }
-  }
-});

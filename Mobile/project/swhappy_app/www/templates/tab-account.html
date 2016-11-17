@@ -1,9 +1,29 @@
-<ion-view view-title="Account">
-  <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list>
-  </ion-content>
+<ion-view view-title="Account"  classe="survey" hide-nav-bar="true">
+  <ion-content style="text-align:center; padding-top:150px">
+  	<div ng-if="!user.connect">
+        <font style="color:white;font-size:19px">Identifiant</font><br />
+        <p></p>
+        <div style="display: inline-block;text-align: center;">
+            <input type="text" ng-model="accountPage.login"/>
+        </div>
+        <br/><br/>
+        <font style="color:white;padding-top:20px;font-size:18px">Mot de passe</font><br />
+        <p></p>
+        <div style="display: inline-block;text-align: center;">
+            <input type="password" ng-model="accountPage.mdp"/>
+        </div>
+        <br/><br/><br/>    
+        <button class="button button-light" ng-click="connexion()">Connecter</button>
+    </div>
+    <div ng-if="user.connect">
+        <font style="color:white;font-size:24px">Bonjour {{user.identity.login}}</font>
+        <p style="padding-top:25px;"></p> 
+        <font style="color:white;font-size:24px">Vous possédez:</font>
+        <p style="padding-top:15px;"></p>
+        <font style="color:white;font-size:50px">{{user.identity.score}} pts</font>
+        <p style="padding-top:35px;"></p> 
+        <button class="button button-light" ng-click="deconnexion()">Déconnecter</button>
+    </div>
+</ion-content>
+<img class="image1" ng-src="img/background-2.png" />
 </ion-view>

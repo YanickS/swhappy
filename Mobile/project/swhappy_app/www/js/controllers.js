@@ -1,9 +1,9 @@
 angular.module('starter.controllers', [])
 
-.controller('SurveyCtrl', function ($scope, SurveyFactory, $stateParams) {
+.controller('SurveyCtrl', function ($rootScope, $scope, $stateParams, SurveyFactory, $stateParams) {
 
-	$scope.getSurveysByUserID = function (id_user) {
-		SurveyFactory.getUserSurveys(id_user)
+	$scope.getSurveysByLogin = function (login) {
+		SurveyFactory.getUserSurveys(login)
 		.then(function (response) {
 			$scope.surveys = response.data;
 			console.log ('Questionnaires récupérées');
@@ -12,12 +12,11 @@ angular.module('starter.controllers', [])
 		});
 	};
 
-	$scope.user = 1003
 	if ($scope.surveys){location.reload();console.log("coucou");}
-	$scope.getSurveysByUserID($scope.user);
+	$scope.getSurveysByLogin($rootScope.user.identity.login);
 })
 
-.controller('QuestionCtrl', function($scope, $stateParams, TDCardDelegate, $timeout, QuestionFactory,SurveyFactory) {
+.controller('QuestionCtrl', function($rootScope, $scope, $stateParams, TDCardDelegate, $timeout, QuestionFactory, SurveyFactory) {
 
 	var cardTypes;
 
@@ -41,8 +40,8 @@ angular.module('starter.controllers', [])
 		});
 	};
 
-	$scope.completeSurvey = function (id_survey,id_user) {
-		SurveyFactory.completeSurvey(id_survey,id_user)
+	$scope.completeSurvey = function (id_survey,login) {
+		SurveyFactory.completeSurvey(id_survey,login)
 		.then(function (response) {
 			console.log ('Questionnaire terminé');
 		}, function (error) {
@@ -82,7 +81,7 @@ angular.module('starter.controllers', [])
 	};
 
 	$scope.end = function() {
-		$scope.completeSurvey($stateParams.id,$stateParams.id_user);
+		$scope.completeSurvey($stateParams.id,$rootScope.user.identity.login);
 		console.log('end');
 	}
 
@@ -112,8 +111,41 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('AccountCtrl', function($scope) {
-	$scope.settings = {
-		enableFriends: true
+.controller('AccountCtrl', function($rootScope, $scope, Auth) {
+
+	$scope.accountPage = {
+		login: "login",
+		mdp: "password"
 	};
+
+	$rootScope.user = {
+		identity: {},
+		connect: false
+	}
+
+	$scope.connexion = function(){
+		Auth.getToken({
+			username: $scope.accountPage.login,
+          	password: $scope.accountPage.mdp,
+            rememberMe: false 
+        }).then(function (result) {
+        	if(!result.data){
+        		alert(result);
+        	} else {
+        		var token = result.data.id_token
+	        	Auth.getUserWithToken(token).then(function (result){
+					$scope.user.identity = result.data;
+					$scope.user.connect = true;
+	        	});
+        	}
+        });
+	};
+
+	$scope.deconnexion = function(){
+		$rootScope.user = {
+			identity: {},
+			connect: false
+		};
+	}
+
 });
