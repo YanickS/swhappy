@@ -12,17 +12,26 @@
 
         vm.clear = clear;
         vm.save = save;
+        vm.survey = {};
 
         function clear () {
             $uibModalInstance.dismiss('cancel');
         }
+        
+        if($stateParams.idSurvey){
+        	vm.survey = Survey.get({id: $stateParams.idSurvey});
+        }
 
         function save () {
             vm.isSaving = true;
-            Entreprise.get({id:$stateParams.id}, function success(result){
-        		vm.survey.entreprise = result;
-                Survey.save(vm.survey, onSaveSuccess, onSaveError);
-        	});
+            if($stateParams.idSurvey){
+            	Survey.update(vm.survey, onSaveSuccess, onSaveError);
+            } else {
+	            Entreprise.get({id:$stateParams.idEntreprise}, function success(result){
+	        		vm.survey.entreprise = result;
+	                Survey.save(vm.survey, onSaveSuccess, onSaveError);
+	        	});
+            }
         }
 
         function onSaveSuccess (result) {

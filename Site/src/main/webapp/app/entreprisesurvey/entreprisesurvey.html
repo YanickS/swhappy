@@ -17,7 +17,7 @@
    				 </div>
     			<div class="row-content">
       				<div class="action-secondary">
-      					<i style="color:#009688;"class="material-icons">create</i>
+      					<i style="color:#009688;"class="material-icons" ui-sref="entreprisesurvey.edit({idEntreprise: vm.entreprise.id, idSurvey: survey.id})">create</i>
       					<i style="color:#f44336;" ui-sref="entreprisesurvey.delete({id:survey.id})" class="material-icons">delete</i>
       				</div>
       				<h6 class="list-group-item-heading">{{survey.title}}</h6>
@@ -28,7 +28,7 @@
   		</div>
   		
   		<div style="text-align:center;" >
-	  		<button class="btn btn-primary" ui-sref="entreprisesurvey.new({id: vm.entreprise.id})" >
+	  		<button class="btn btn-primary" ui-sref="entreprisesurvey.new({idEntreprise: vm.entreprise.id})" >
 	        	<span class="glyphicon glyphicon-plus"></span>
 	            <span  data-translate="swhappyApp.entreprisesurvey.home.createLabel">Create new Survey</span>
 	     	</button>
