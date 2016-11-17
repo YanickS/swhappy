@@ -142,7 +142,7 @@ angular.module('starter.controllers', [])
 	};
 
 	$scope.deconnexion = function(){
-		$scope.user = {
+		$rootScope.user = {
 			identity: {},
 			connect: false
 		};
