@@ -7,6 +7,7 @@
   top: 10px;
   width: 100%;
   text-align: center;
+  color: #FFF;
 }
 
 .end-quest {
@@ -87,4 +88,20 @@ td-card#end-card {
   -webkit-transition: 0.2s opacity linear;
   transition: 0.2s opacity linear;
   opacity: 0;
+}
+
+.list-card {
+    padding-top: 70px;
+}
+
+.image1 {
+    margin-left: -20px;
+}
+.image2 {
+    margin-left: -30px;
+    margin-top: -30px
+}
+
+.titredemerde {
+    margin-top: -50px;
 }
