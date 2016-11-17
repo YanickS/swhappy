@@ -63,7 +63,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
 
   .state('tab.account', {
     url: '/account',
-    cache: false,
     views: {
       'tab-account': {
         templateUrl: 'templates/tab-account.html',
